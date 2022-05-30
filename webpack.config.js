@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   target: 'web', // 默认打包成web平台的
   mode: 'production', // 环境 development 和 production 环境 链接： https://www.webpackjs.com/concepts/mode/#mode-development
-  entry: path.resolve(__dirname, './src/index.jsx'), // 文件的入口
+  entry: path.resolve(__dirname, './src/index.tsx'), // 文件的入口
   output: {
     filename: 'js/[name].[chunkhash:8].js', // 文件名
     path: path.resolve(__dirname, './dist') // 文件输出地址
@@ -28,7 +28,7 @@ module.exports = {
         minifyJS: true, // 在脚本元素和事件属性中缩小JavaScript(使用UglifyJS)
         minifyCSS: true // 缩小CSS样式元素和样式属性
       },
-      nodeModules: path.resolve(__dirname, '../node_modules')
+      nodeModules: path.resolve(__dirname, './node_modules')
     }),
     new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash:8].css' }), // 设置文件存放的位置和名称
   ],
