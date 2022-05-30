@@ -1,0 +1,23 @@
+// .babelrc
+{
+  "comments": false,
+  "presets": [
+    ["@babel/env", {
+      "targets": { "browsers": ["> 1%", "last 2 versions", "not ie <= 8"] },
+      "useBuiltIns": "usage",
+      "corejs": 3,
+      "loose": true
+    }],
+    "@babel/react"
+  ],
+  "plugins": [
+    "dynamic-import-node",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-arrow-functions",
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-object-rest-spread",
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    ["@babel/plugin-proposal-private-methods", { "loose": true }]
+  ]
+}

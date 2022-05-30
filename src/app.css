@@ -1,0 +1,15 @@
+.div-container {
+  margin: 0;
+  padding: 0;
+}
+.div-container .div-btn {
+  width: 100px;
+  height: 30px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #108EE9;
+  transition: all;
+}
