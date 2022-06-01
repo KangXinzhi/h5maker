@@ -1,9 +1,19 @@
-import React from 'react'
-import './app.css'
+import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import List from './pages/List'
+import 'antd/dist/antd.css'
+import Maker from './pages/Maker'
 
-export default () => {
-  return <div className='div-container'>
-    <p>hello world</p>
-    <div className='div-btn'>跳转</div>
-  </div>
+function App() {
+
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<List />}></Route>
+        <Route path="/shop/create" element={<Maker />}></Route>
+      </Routes>
+    </div>
+  )
 }
+
+export default App

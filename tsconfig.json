@@ -1,40 +1,21 @@
-// tsconfig.json
 {
-  "ts-node": { // 这个是属于ts-node去编译配置文件的时候会执行的配置和开发的配置有所不同
-    "compilerOptions": {
-      "module": "commonjs",
-      "target": "es5",
-      "sourceMap": true,
-      "removeComments": true,
-      "strict": true,
-      "noImplicitAny": true,
-      "strictNullChecks": true,
-      "moduleResolution": "node",
-      "baseUrl": "./",
-      "typeRoots": ["node_modules/@types"],
-      "esModuleInterop": true
-    },
-    "exclude": ["node_modules"],
-    "include": [
-      "config/*"
-    ]
-  },
   "compilerOptions": {
-    "target": "es6", 
-    "module": "esnext",
-    "jsx": "react",
-    "sourceMap": true,
-    "removeComments": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "moduleResolution": "node",
-    "baseUrl": "./",
-    "typeRoots": ["node_modules/@types"],
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "exclude": ["node_modules", "config/*"],
-  "include": ["src/*"]
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
