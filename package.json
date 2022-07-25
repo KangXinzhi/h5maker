@@ -11,9 +11,12 @@
     "antd": "^4.20.7",
     "dexie": "^3.2.2",
     "dexie-react-hooks": "^1.1.1",
+    "immutability-helper": "^3.1.1",
     "less": "^4.1.2",
     "less-loader": "^11.0.0",
     "react": "^18.0.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0"
   },

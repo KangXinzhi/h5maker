@@ -1,11 +1,15 @@
-import React, { useCallback } from 'react'
+import { CSSProperties, FC, useCallback } from 'react'
+import { useDrop } from 'react-dnd'
+import { ICardProps } from '.'
 import update from 'immutability-helper'
-import { ICardProps } from '../preview'
-import './index.less'
-import { Card } from './Card'
+import { Card, ItemTypes } from './Card'
 
-const index = (props: ICardProps) => {
+
+export const Dustbin: FC<ICardProps> = (props) => {
   const { cards, setCards } = props
+
+  const [, drop] = useDrop(() => ({ accept: ItemTypes.CARD }))
+
   const findCard = useCallback(
     (id: string) => {
       const card = cards.filter((c) => `${c.id}` === id)[0] as {
@@ -36,17 +40,16 @@ const index = (props: ICardProps) => {
   )
 
   return (
-    <div className="com-list">
-      <div className="com-item">
+    <div className="content" ref={drop} data-testid="dustbin">
+      {cards.map((card) => (
         <Card
-          key={8}
-          id={'8'}
-          text={'test'}
+          key={card.id}
+          id={`${card.id}`}
+          text={card.text}
           moveCard={moveCard}
           findCard={findCard}
         />
-      </div>
+      ))}
     </div>
   )
 }
-export default index
