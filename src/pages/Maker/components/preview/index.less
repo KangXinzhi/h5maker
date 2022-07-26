@@ -6,7 +6,13 @@
   bottom: 0;
   min-height: 601px;
   z-index: -1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
+// 去除滑动条
+.preview-wrap::-webkit-scrollbar {
+	display:none;
 }
 
 .preview{

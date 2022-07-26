@@ -2,48 +2,41 @@ import React, { useCallback } from 'react'
 import update from 'immutability-helper'
 import { ICardProps } from '../preview'
 import './index.less'
-import { Card } from './Card'
+import { Thumbnail } from './Thumbnail'
 
 const index = (props: ICardProps) => {
   const { cards, setCards } = props
-  const findCard = useCallback(
-    (id: string) => {
-      const card = cards.filter((c) => `${c.id}` === id)[0] as {
-        id: number
-        text: string
-      }
-      return {
-        card,
-        index: cards.indexOf(card),
-      }
-    },
-    [cards],
-  )
-
-  const moveCard = useCallback(
-    (id: string, atIndex: number) => {
-      const { card, index } = findCard(id)
-      setCards(
-        update(cards, {
-          $splice: [
-            [index, 1],
-            [atIndex, 0, card],
-          ],
-        }),
-      )
-    },
-    [findCard, cards, setCards],
-  )
 
   return (
     <div className="com-list">
       <div className="com-item">
-        <Card
-          key={8}
-          id={'8'}
-          text={'test'}
-          moveCard={moveCard}
-          findCard={findCard}
+        <Thumbnail
+          item={{
+            id: '8', 
+            type: 'title',
+            text: '标题文本',
+            icon: 'https://img01.yzcdn.cn/upload_files/2022/06/17/FjAs6eTmbK_4lQRI3GYXu97Fj_B_.png'
+          }}
+        />
+      </div>
+      <div className="com-item">
+        <Thumbnail
+          item={{
+            id: '9', 
+            type: 'search',
+            text: '商品搜索',
+            icon: 'https://img01.yzcdn.cn/upload_files/2022/06/17/FsW9Sbp2UH3-1suib4UB-RwyaR3y.png'
+          }}
+        />
+      </div>
+      <div className="com-item">
+        <Thumbnail
+          item={{
+            id: '10', 
+            type: 'notice',
+            text: '公告',
+            icon: 'https://img01.yzcdn.cn/upload_files/2022/06/17/FlcvwSqlns7YVxDk8Zi2yAG6oEji.png'
+          }}
         />
       </div>
     </div>

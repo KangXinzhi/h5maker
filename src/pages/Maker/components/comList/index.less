@@ -5,7 +5,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   bottom: 0;
-  background: skyblue;
+  background: #fff;
   width: 176px;
   padding: 0 12px;
   box-sizing: content-box;
@@ -22,10 +22,38 @@
   cursor: move;
   background: #fff;
 
+  .com-item__icon{
+    display: inline-block;
+    margin-top: 8px;
+    background-position: 0 0;
+    height: 32px;
+    width: 32px;
+    background-size: cover;
+  }
+
   &:hover{
     background: #155bd4;
     border-radius: 2px;
     font-weight: 700;
     color: white;
+
+    .com-item__icon{
+      background-position: 0 32px;
+    }
   }
 }
+
+.thumb-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    margin-top: 4px;
+  }
+}
+
+
