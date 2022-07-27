@@ -92,8 +92,6 @@ export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards }) => {
           }),
         )
       }
-    
-
       item.originalIndex = hoverIndex
     },
   })
@@ -109,7 +107,6 @@ export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards }) => {
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-   
   })
 
   const opacity = isDragging ? 0.4 : 1

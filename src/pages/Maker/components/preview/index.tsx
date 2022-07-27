@@ -1,6 +1,6 @@
 import { Button } from 'antd'
 import React from 'react'
-import { Dustbin } from './Dustbin'
+import { Card } from './Card'
 import './index.less'
 
 export interface ICardProps {
@@ -14,8 +14,8 @@ export interface ICardProps {
   }[]>>
 }
 
-
 const index = (props: ICardProps) => {
+  const {cards, setCards} = props
   return (
     <div className='preview-wrap'>
       <div className='tool-bar'>
@@ -24,7 +24,18 @@ const index = (props: ICardProps) => {
         <div className='btn'>历史记录</div>
       </div>
       <div className='preview'>
-        <Dustbin cards={props.cards} setCards={props.setCards} />
+        <div className="content">
+          {cards.map((card, index) => (
+            <Card
+              key={card.id + '-' + index}
+              IDkey={card.id + '-' + index}
+              item={card}
+              index={index}
+              cards={cards}
+              setCards={setCards}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )

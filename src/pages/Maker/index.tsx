@@ -28,54 +28,14 @@ const Maker: React.FC = () => {
     {
       id: 3,
       text: 'Create some examples',
-    },
-    {
-      id: 3,
-      text: 'Spam in Twitter and IRC to promote it',
-    },
-    {
-      id: 6,
-      text: '???',
-    },
-    {
-      id: 7,
-      text: 'PROFIT',
-    },
-    {
-      id: 1,
-      text: 'Write a cool JS library',
-    },
-    {
-      id: 2,
-      text: 'Make it generic enough',
-    },
-    {
-      id: 3,
-      text: 'Write README',
-    },
-    {
-      id: 3,
-      text: 'Create some examples',
-    },
-    {
-      id: 3,
-      text: 'Spam in Twitter and IRC to promote it',
-    },
-    {
-      id: 6,
-      text: '???',
-    },
-    {
-      id: 7,
-      text: 'PROFIT',
-    },
+    }
   ]
   const [cards, setCards] = useState(ITEMS)
   return (
     <div className='container'>
       <DndProvider backend={HTML5Backend}>
         <TopBar />
-        <ComList cards={cards} setCards={setCards} />
+        <ComList/>
         <Preview cards={cards} setCards={setCards} />
         <Editor />
       </DndProvider>

@@ -4,8 +4,7 @@ import { ICardProps } from '../preview'
 import './index.less'
 import { Thumbnail } from './Thumbnail'
 
-const index = (props: ICardProps) => {
-  const { cards, setCards } = props
+const index = () => {
 
   return (
     <div className="com-list">
