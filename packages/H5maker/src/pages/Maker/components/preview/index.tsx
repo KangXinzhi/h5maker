@@ -23,7 +23,7 @@ const index = (props: ICardProps) => {
         <div className='btn'>组件管理</div>
         <div className='btn'>历史记录</div>
       </div>
-      <div className='preview'>
+      {/* <div className='preview'>
         <div className="content">
           {cards.map((card, index) => (
             <Card
@@ -35,8 +35,15 @@ const index = (props: ICardProps) => {
               setCards={setCards}
             />
           ))}
-        </div>
-      </div>
+        </div> 
+      </div> */}
+      <iframe
+        className='preview-iframe'
+        src="http://localhost:3007/#/preview"
+        scrolling="yes"
+        frameBorder="0"
+        id="preview"
+      />
     </div>
   )
 }

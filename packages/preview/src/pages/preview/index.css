@@ -1,0 +1,16 @@
+
+.preview{
+  position: absolute;
+  left: -200px;
+  right: 0;
+  bottom: 0;
+  top: 72px;
+}
+
+.content{
+  width: 375px;
+  max-width: 540px;
+  margin: 0 auto;
+  min-height: 603px;
+  background-color: #f7f8fa;
+}

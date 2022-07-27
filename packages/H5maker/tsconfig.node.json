@@ -4,5 +4,5 @@
     "module": "esnext",
     "moduleResolution": "node"
   },
-  "include": ["vite.config.ts"]
+  "include": ["packages/H5maker/vite.config.ts"]
 }
