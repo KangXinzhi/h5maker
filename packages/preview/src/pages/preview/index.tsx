@@ -25,18 +25,22 @@ const ITEMS = [
 ]
 const PreView = () => {
   const [cards, setCards] = useState(ITEMS); // all component
+  const [currentIndex, setCurrentIndex] = useState(-1); // current component
+
   return (
     <div className='preview'>
       <DndProvider backend={HTML5Backend}>
         <div className="content">
           {cards.map((card, index) => (
             <Card
+              currentIndex={currentIndex}
               key={card.id + '--' + index}
               IDkey={card.id + '--' + index}
               item={card}
               index={index}
               cards={cards}
               setCards={setCards}
+              setCurrentIndex={setCurrentIndex}
             />
           ))}
         </div>

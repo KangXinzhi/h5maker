@@ -31,12 +31,14 @@ const Maker: React.FC = () => {
     }
   ]
   const [cards, setCards] = useState(ITEMS)
+  const [showIframe, setShowIframe] = useState(true)
+
   return (
     <div className='container'>
       <DndProvider backend={HTML5Backend}>
-        <TopBar />
-        <ComList/>
-        <Preview cards={cards} setCards={setCards} />
+        <TopBar/>
+        <ComList setShowIframe={setShowIframe}/>
+        <Preview showIframe={showIframe} cards={cards} setCards={setCards} />
         <Editor />
       </DndProvider>
     </div>

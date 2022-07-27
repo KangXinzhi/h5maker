@@ -4,7 +4,7 @@ import { ICardProps } from '../preview'
 import './index.less'
 import { Thumbnail } from './Thumbnail'
 
-const index = () => {
+const index = (props:{setShowIframe: (showIframe: boolean) => void}) => {
 
   return (
     <div className="com-list">
@@ -16,6 +16,7 @@ const index = () => {
             text: '标题文本',
             icon: 'https://img01.yzcdn.cn/upload_files/2022/06/17/FjAs6eTmbK_4lQRI3GYXu97Fj_B_.png'
           }}
+          setShowIframe={props.setShowIframe}
         />
       </div>
       <div className="com-item">
@@ -26,6 +27,7 @@ const index = () => {
             text: '商品搜索',
             icon: 'https://img01.yzcdn.cn/upload_files/2022/06/17/FsW9Sbp2UH3-1suib4UB-RwyaR3y.png'
           }}
+          setShowIframe={props.setShowIframe}
         />
       </div>
       <div className="com-item">
@@ -36,6 +38,7 @@ const index = () => {
             text: '公告',
             icon: 'https://img01.yzcdn.cn/upload_files/2022/06/17/FlcvwSqlns7YVxDk8Zi2yAG6oEji.png'
           }}
+          setShowIframe={props.setShowIframe}
         />
       </div>
     </div>

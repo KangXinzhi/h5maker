@@ -9,6 +9,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(100% - 56px);
+  background-color: #f7f8fa;
 }
 
 // 去除滑动条
@@ -51,7 +52,7 @@
   max-width: 540px;
   margin: 0 auto;
   min-height: 603px;
-  background-color: #f7f8fa;
+  box-shadow: 0 4px 16px 0 rgb(0 0 0 / 10%);
 }
 
 .preview-iframe{
@@ -63,4 +64,15 @@
   border: none;
   height: 100%;
   width: 100%;
+}
+
+.card-container {
+  border: 1px dashed rgba(0,0,0,0);
+  font-size: 16px;
+  padding: 4px 8px;
+  background-color: white;
+  cursor: move;
+  &:hover{
+      border: 1px dashed rgb(88, 133, 223);
+  }
 }

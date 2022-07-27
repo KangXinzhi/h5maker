@@ -4,14 +4,6 @@ import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import update from 'immutability-helper'
 
-const style = {
-  border: '1px dashed gray',
-  padding: '0.5rem 1rem',
-  marginBottom: '.5rem',
-  backgroundColor: 'white',
-  cursor: 'move',
-}
-
 export interface CardProps {
   item: {
     id: number;
@@ -36,7 +28,7 @@ interface DragItem {
   comp: Item
 }
 
-export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards }) => {
+export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards }) => {
   const { id, text } = item
   const ref = useRef<HTMLDivElement>(null)
   const [{ handlerId }, drop] = useDrop<
@@ -74,21 +66,21 @@ export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards }) => {
         return
       }
 
-      if(item.originalIndex!==-1){
+      if (item.originalIndex !== -1) {
         setCards((prevCards: Item[]) =>
-        update(prevCards, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, prevCards[dragIndex] as Item],
-          ],
+          update(prevCards, {
+            $splice: [
+              [dragIndex, 1],
+              [hoverIndex, 0, prevCards[dragIndex] as Item],
+            ],
           }),
         )
-      }else{
+      } else {
         setCards((prevCards: Item[]) =>
-        update(prevCards, {
-          $splice: [
-            [hoverIndex, 0, item.comp],
-          ],
+          update(prevCards, {
+            $splice: [
+              [hoverIndex, 0, item.comp],
+            ],
           }),
         )
       }
@@ -99,21 +91,26 @@ export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards }) => {
   const [{ isDragging }, drag] = useDrag({
     type: 'comp',
     item: () => {
-      return {comp: item, originalIndex: index}
+      return { comp: item, originalIndex: index }
     },
     isDragging: (monitor) => {
-      return monitor.getItem().comp.id+'-'+monitor.getItem().originalIndex === IDkey
+      return monitor.getItem().comp.id + '-' + monitor.getItem().originalIndex === IDkey
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   })
 
-  const opacity = isDragging ? 0.4 : 1
+  const opacity = isDragging ? 0 : 1
   drag(drop(ref))
 
   return (
-    <div ref={ref} style={{ ...style, opacity }} data-handler-id={handlerId}>
+    <div
+      ref={ref}
+      style={{ opacity }}
+      className="card-container"
+      data-handler-id={handlerId}
+    >
       {text}
     </div>
   )

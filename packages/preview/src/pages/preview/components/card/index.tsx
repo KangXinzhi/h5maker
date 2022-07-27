@@ -3,15 +3,8 @@ import type { FC } from 'react'
 import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import update from 'immutability-helper'
-
-const style = {
-  border: '1px dashed gray',
-  padding: '0.5rem 1rem',
-  marginBottom: '.5rem',
-  backgroundColor: 'white',
-  cursor: 'move',
-}
-
+import classnames from 'classnames'
+import './index.less'
 export interface CardProps {
   item: {
     id: number;
@@ -24,6 +17,8 @@ export interface CardProps {
   }[]
   setCards: any
   IDkey: string
+  currentIndex: number
+  setCurrentIndex: (currentIndex: number) => void
 }
 
 export interface Item {
@@ -36,7 +31,7 @@ interface DragItem {
   comp: Item
 }
 
-export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards }) => {
+export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards, currentIndex, setCurrentIndex }) => {
   const { id, text } = item
   const ref = useRef<HTMLDivElement>(null)
   const [{ handlerId }, drop] = useDrop<
@@ -109,11 +104,22 @@ export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards }) => {
     }),
   })
 
-  const opacity = isDragging ? 0.4 : 1
+  const opacity = isDragging ? 0 : 1
   drag(drop(ref))
 
   return (
-    <div ref={ref} style={{ ...style, opacity }} data-handler-id={handlerId}>
+    <div 
+      ref={ref} 
+      style={{ 
+        opacity,
+        border: '1px solid #blue' 
+      }} 
+      className = {classnames('card2-container',{
+        'active': currentIndex===index
+      })}
+      data-handler-id={handlerId}
+      onClick={()=>{setCurrentIndex(index)}}
+    >
       {text}
     </div>
   )
