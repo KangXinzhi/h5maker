@@ -3,6 +3,7 @@ import type { FC } from 'react'
 import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import update from 'immutability-helper'
+import classnames from 'classnames'
 
 export interface CardProps {
   item: {
@@ -16,6 +17,7 @@ export interface CardProps {
   }[]
   setCards: any
   IDkey: string
+  compActiveIndex: number | null
 }
 
 export interface Item {
@@ -28,7 +30,7 @@ interface DragItem {
   comp: Item
 }
 
-export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards }) => {
+export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compActiveIndex }) => {
   const { id, text } = item
   const ref = useRef<HTMLDivElement>(null)
   const [{ handlerId }, drop] = useDrop<
@@ -107,8 +109,13 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards }) => 
   return (
     <div
       ref={ref}
-      style={{ opacity }}
-      className="card-container"
+      style={{ 
+        opacity,
+        border: '1px solid #blue'
+      }}
+      className = {classnames('card-container',{
+        'active': compActiveIndex===index
+      })}
       data-handler-id={handlerId}
     >
       {text}

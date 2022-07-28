@@ -67,12 +67,15 @@
 }
 
 .card-container {
-  border: 1px dashed rgba(0,0,0,0);
+  border: 2px dashed rgba(0,0,0,0);
   font-size: 16px;
   padding: 4px 8px;
   background-color: white;
   cursor: move;
   &:hover{
-      border: 1px dashed rgb(88, 133, 223);
+      border: 2px dashed rgb(88, 133, 223);
+  }
+  &.active{
+      border: 2px solid rgb(88, 133, 223);
   }
 }

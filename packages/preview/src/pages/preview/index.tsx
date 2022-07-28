@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { Card } from "./components/card";
@@ -25,7 +25,24 @@ const ITEMS = [
 ]
 const PreView = () => {
   const [cards, setCards] = useState(ITEMS); // all component
-  const [currentIndex, setCurrentIndex] = useState(-1); // current component
+  const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null); // 画布中当前正选中的组件
+
+  console.log(compActiveIndex)
+
+  useEffect(()=>{
+    window.parent.postMessage({ compActiveIndex: compActiveIndex, cards: cards }, "*");
+  },[compActiveIndex])
+
+  
+    //监听父页面 传过来的postmessage
+    useEffect(() => {
+      window.addEventListener('message', (e) => {
+        if(e.origin==='http://localhost:3000'){
+          setCards(e.data)
+      }
+      });
+    }, []);
+
 
   return (
     <div className='preview'>
@@ -33,14 +50,14 @@ const PreView = () => {
         <div className="content">
           {cards.map((card, index) => (
             <Card
-              currentIndex={currentIndex}
               key={card.id + '--' + index}
               IDkey={card.id + '--' + index}
               item={card}
               index={index}
               cards={cards}
               setCards={setCards}
-              setCurrentIndex={setCurrentIndex}
+              compActiveIndex={compActiveIndex}
+              setCompActiveIndex={setCompActiveIndex}
             />
           ))}
         </div>

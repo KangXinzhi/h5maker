@@ -17,8 +17,8 @@ export interface CardProps {
   }[]
   setCards: any
   IDkey: string
-  currentIndex: number
-  setCurrentIndex: (currentIndex: number) => void
+  compActiveIndex: number|null
+  setCompActiveIndex: (compActiveIndex: number) => void
 }
 
 export interface Item {
@@ -31,7 +31,7 @@ interface DragItem {
   comp: Item
 }
 
-export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards, currentIndex, setCurrentIndex }) => {
+export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards, compActiveIndex, setCompActiveIndex }) => {
   const { id, text } = item
   const ref = useRef<HTMLDivElement>(null)
   const [{ handlerId }, drop] = useDrop<
@@ -115,10 +115,12 @@ export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards, curren
         border: '1px solid #blue' 
       }} 
       className = {classnames('card2-container',{
-        'active': currentIndex===index
+        'active': compActiveIndex===index
       })}
       data-handler-id={handlerId}
-      onClick={()=>{setCurrentIndex(index)}}
+      onClick={()=>{
+        setCompActiveIndex(index)
+      }}
     >
       {text}
     </div>

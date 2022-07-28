@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, Tag, Space, Button, Modal } from 'antd';
 import type { ColumnsType } from 'antd/lib/table';
 import './index.less'
@@ -32,14 +32,31 @@ const Maker: React.FC = () => {
   ]
   const [cards, setCards] = useState(ITEMS)
   const [showIframe, setShowIframe] = useState(true)
+  const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null); // 画布中当前正选中的组件
+
+  //监听iframe 传过来的postmessage
+  useEffect(() => {
+    window.addEventListener('message', ({ data }) => {
+      const { compActiveIndex,cards } = data;
+      setCompActiveIndex(compActiveIndex);
+      setCards(cards);
+    });
+  }, []);
+
+  useEffect(() => {
+    const iFrame = document.getElementById('previewIframe')
+    if (iFrame) {
+      iFrame.contentWindow.postMessage(cards, 'http://localhost:3007/#/preview');
+    }
+  }, [cards.length])
 
   return (
     <div className='container'>
       <DndProvider backend={HTML5Backend}>
-        <TopBar/>
-        <ComList setShowIframe={setShowIframe}/>
-        <Preview showIframe={showIframe} cards={cards} setCards={setCards} />
-        <Editor />
+        <TopBar />
+        <ComList setShowIframe={setShowIframe} />
+        <Preview compActiveIndex={compActiveIndex} showIframe={showIframe} cards={cards} setCards={setCards} />
+        <Editor cards={cards} setCards={setCards} compActiveIndex={compActiveIndex} />
       </DndProvider>
     </div>
   )
