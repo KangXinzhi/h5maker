@@ -1,3 +1,4 @@
+import { Input } from 'antd';
 import React from 'react'
 import './index.less'
 
@@ -18,7 +19,19 @@ const index = (props:IProps) => {
 
   return (
     <div className="editor">
-      {compActiveIndex!==null && cards[compActiveIndex].text}
+      {compActiveIndex!==null && (
+        <>
+        <h2>{cards[compActiveIndex].text}</h2>
+        {cards[compActiveIndex].config.map((item,index)=>(
+          item.format==='title' && (
+            <>
+              <h4>{item.label}</h4>
+              <Input placeholder='请输入标题'/>
+            </>
+          )
+        ))}
+        </>
+      )}
     </div>
   )
 }

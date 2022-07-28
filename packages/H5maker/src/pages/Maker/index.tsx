@@ -13,21 +13,40 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const Maker: React.FC = () => {
   const ITEMS = [
+    // {
+    //   id: 1,
+    //   text: 'Write a cool JS library',
+    // },
+    // {
+    //   id: 2,
+    //   text: 'Make it generic enough',
+    // },
+    // {
+    //   id: 3,
+    //   text: 'Write README',
+    // },
+    // {
+    //   id: 3,
+    //   text: 'Create some examples',
+    // },
     {
-      id: 1,
-      text: 'Write a cool JS library',
-    },
-    {
-      id: 2,
-      text: 'Make it generic enough',
-    },
-    {
-      id: 3,
-      text: 'Write README',
-    },
-    {
-      id: 3,
-      text: 'Create some examples',
+      id: 9,
+      text: 'test',
+      config: [
+        {
+          "name": "bgcColor",
+          "label": "按钮颜色",
+          "type": "string",
+          "format": "color"
+        },
+        {
+          "name": "btnText",
+          "label": "按钮文案",
+          "type": "string",
+          "format": "text"
+        },
+      ],
+      defaultConfig: { "btnText": "这是一个按钮", "bgcColor": "#333333" },
     }
   ]
   const [cards, setCards] = useState(ITEMS)

@@ -11,6 +11,8 @@ export interface CardProps {
     text: string
     icon: string
     type: string
+    config: any
+    defaultConfig: any
   }
   setShowIframe: (showIframe: boolean) => void
 }

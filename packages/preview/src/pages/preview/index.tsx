@@ -6,21 +6,35 @@ import "./index.css";
 
 let id = 0;
 const ITEMS = [
+  // {
+  //   id: 1,
+  //   text: 'Write a cool JS library',
+  // },
+  // {
+  //   id: 2,
+  //   text: 'Make it generic enough',
+  // },
+  // {
+  //   id: 3,
+  //   text: 'Write README',
+  // },
+  // {
+  //   id: 3,
+  //   text: 'Create some examples',
+  // }
   {
-    id: 1,
-    text: 'Write a cool JS library',
-  },
-  {
-    id: 2,
-    text: 'Make it generic enough',
-  },
-  {
-    id: 3,
-    text: 'Write README',
-  },
-  {
-    id: 3,
-    text: 'Create some examples',
+    id: 9,
+    text: '标题文本',
+    config: [
+      {
+        name: "btnText",
+        label: "标题内容",
+        type: "input",
+        format: "title",
+        value:''
+      },
+    ],
+    defaultConfig: { "btnText": "这是一个按钮", "bgcColor": "#333333" },
   }
 ]
 const PreView = () => {
