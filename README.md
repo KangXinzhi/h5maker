@@ -16,6 +16,7 @@
   - 有节省代码，不然要实现两边展示区的逻辑
   - 方便预览
 - 跨 iframe 拖拽，一些拖拽组件如react-dnd react-beautiful-dnd 都无法实现，参考了掘金上的一些文章，转转团队它们因react-dnd不支持跨iframe便放弃了，自己使用原生H5的拖拽事件封装一个。而我参考一些文章后的设计思路：数据驱动视图，可以在拖动时显示一个和iframe样式相同的盒子，来模拟iframe进行拖拽，因为在同一组件中并未设计到跨iframe并不会有任何问题，可以使用任何方式完成如react-dnd，只需拖拽结束后同步数据，传给iframe，iframe接收到数据后进行显示
+- 使用 postMessage 进行跨 Iframe 通信
 
 ### 物料区组件schema定义
 ```

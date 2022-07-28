@@ -44,8 +44,8 @@ const Maker: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const iFrame = document.getElementById('previewIframe')
-    if (iFrame) {
+    const iFrame = document.getElementById('previewIframe') as HTMLIFrameElement;
+    if (iFrame && iFrame.contentWindow) {
       iFrame.contentWindow.postMessage(cards, 'http://localhost:3007/#/preview');
     }
   }, [cards.length])
