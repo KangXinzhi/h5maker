@@ -26,7 +26,14 @@ const index = (props:IProps) => {
           item.format==='title' && (
             <>
               <h4>{item.label}</h4>
-              <Input placeholder='请输入标题'/>
+              <Input 
+                placeholder='请输入标题' 
+                value={cards[compActiveIndex].config[index].value} 
+                onChange={(e)=>{
+                  const copyCards = cards.splice(0)
+                  copyCards[compActiveIndex].config[index].value = e.target.value
+                  setCards(copyCards)
+              }}/>
             </>
           )
         ))}

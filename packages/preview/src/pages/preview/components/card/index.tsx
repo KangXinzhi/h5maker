@@ -122,7 +122,7 @@ export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards, compAc
         setCompActiveIndex(index)
       }}
     >
-      {text}
+      {item.[0].value}
     </div>
   )
 }

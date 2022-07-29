@@ -31,19 +31,14 @@ const Maker: React.FC = () => {
     // },
     {
       id: 9,
-      text: 'test',
+      text: '标题文本',
       config: [
         {
-          "name": "bgcColor",
-          "label": "按钮颜色",
-          "type": "string",
-          "format": "color"
-        },
-        {
-          "name": "btnText",
-          "label": "按钮文案",
-          "type": "string",
-          "format": "text"
+          name: "btnText",
+          label: "标题内容",
+          type: "input",
+          format: "title",
+          value:'1'
         },
       ],
       defaultConfig: { "btnText": "这是一个按钮", "bgcColor": "#333333" },
@@ -67,7 +62,7 @@ const Maker: React.FC = () => {
     if (iFrame && iFrame.contentWindow) {
       iFrame.contentWindow.postMessage(cards, 'http://localhost:3007/#/preview');
     }
-  }, [cards.length])
+  }, [cards])
 
   return (
     <div className='container'>

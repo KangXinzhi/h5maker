@@ -31,7 +31,7 @@ const ITEMS = [
         label: "标题内容",
         type: "input",
         format: "title",
-        value:''
+        value:'1'
       },
     ],
     defaultConfig: { "btnText": "这是一个按钮", "bgcColor": "#333333" },
@@ -52,12 +52,14 @@ const PreView = () => {
     useEffect(() => {
       window.addEventListener('message', (e) => {
         if(e.origin==='http://localhost:3000'){
+          console.log('data',e.data)
           setCards(e.data)
       }
       });
     }, []);
 
-
+  
+  console.log(cards)
   return (
     <div className='preview'>
       <DndProvider backend={HTML5Backend}>
