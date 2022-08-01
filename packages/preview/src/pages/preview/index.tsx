@@ -6,35 +6,117 @@ import "./index.css";
 
 let id = 0;
 const ITEMS = [
-  // {
-  //   id: 1,
-  //   text: 'Write a cool JS library',
-  // },
-  // {
-  //   id: 2,
-  //   text: 'Make it generic enough',
-  // },
-  // {
-  //   id: 3,
-  //   text: 'Write README',
-  // },
-  // {
-  //   id: 3,
-  //   text: 'Create some examples',
-  // }
   {
     id: 9,
     text: '标题文本',
+    name: "titleText",
     config: [
       {
-        name: "btnText",
         label: "标题内容",
         type: "input",
         format: "title",
         value:'1'
       },
+      {
+        label: "描述内容",
+        type: "textarea",
+        format: "content",
+        value:'1'
+      },
+      {
+        label: "显示位置",
+        type: "legend-style-line",
+        format: "position",
+        config: {
+          icon: '#icon-alignleft',
+          style: {
+            justifyContent: 'left',
+          },
+          tooltip: '居左显示',
+        },
+        configOptions: [
+          {
+            icon: '#icon-alignleft',
+            style: {
+              justifyContent: 'left',
+            },
+            tooltip: '居左显示',
+          },{
+            icon: '#icon-aligncenter',
+            style: {
+              justifyContent: 'center',
+            },
+            tooltip: '居中显示',
+          }
+        ]
+      },
+      {
+        label: "标题大小",
+        type: "legend-style-line",
+        format: "title-size",
+        config: {
+          icon: '#icon-alignleft',
+          style: {
+            fontSize: '16px',
+          },
+          tooltip: '大(16)号',
+        },
+        configOptions: [
+          {
+            icon: '#icon-font-16',
+            style: {
+              fontSize: '16px',
+            },
+            tooltip: '大(16)号',
+          },{
+            icon: '#icon-font-14',
+            style: {
+              fontSize: '14px',
+            },
+            tooltip: '中(14)号',
+          },{
+            icon: '#icon-font-12',
+            style: {
+              fontSize: '12px',
+            },
+            tooltip: '小(12)号',
+          }
+        ]
+      },
+      {
+        label: "描述大小",
+        type: "legend-style-line",
+        format: "content-size",
+        config: {
+          icon: '#icon-font-12',
+          style: {
+            fontSize: '12px',
+          },
+          tooltip: '小(12)号',
+        },
+        configOptions: [
+          {
+            icon: '#icon-font-16',
+            style: {
+              fontSize: '16px',
+            },
+            tooltip: '大(16)号',
+          },{
+            icon: '#icon-font-14',
+            style: {
+              fontSize: '14px',
+            },
+            tooltip: '中(14)号',
+          },{
+            icon: '#icon-font-12',
+            style: {
+              fontSize: '12px',
+            },
+            tooltip: '小(12)号',
+          }
+        ]
+      },
     ],
-    defaultConfig: { "btnText": "这是一个按钮", "bgcColor": "#333333" },
   }
 ]
 const PreView = () => {

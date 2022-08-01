@@ -1,5 +1,5 @@
 import type { Identifier, XYCoord } from 'dnd-core'
-import type { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import update from 'immutability-helper'
@@ -106,19 +106,45 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
   const opacity = isDragging ? 0 : 1
   drag(drop(ref))
 
+  const titleTextStyle = useMemo(()=>{
+    let result = {}
+
+    if(item.name==='titleText'){
+      item?.config.forEach((_item:any)=>{
+        if(_item.config){
+          result[_item.format] = _item.config.style
+        }
+      })
+    }
+
+    return result
+  },[item,cards])
+
   return (
     <div
       ref={ref}
-      style={{ 
+      style={{
         opacity,
         border: '1px solid #blue'
       }}
-      className = {classnames('card-container',{
-        'active': compActiveIndex===index
+      className={classnames('card-container', {
+        'active': compActiveIndex === index
       })}
       data-handler-id={handlerId}
     >
-      {text}
+      {item.name === 'titleText' && item?.config.map((item2, index2) => {
+        console.log(2,titleTextStyle['position'])
+        return (
+          <div 
+            key={`titleText-${index2}`} 
+            className='title-text-container'
+            style={titleTextStyle['position']}
+          >
+            {item2.type === 'input' && (<span className='titleTextBlonder' style={titleTextStyle['title-size']}>{item2.value}</span>)}
+            {item2.type === 'textarea' && (<span style={titleTextStyle['content-size']}>{item2.value}</span>)}
+          </div>
+        )
+      })}
     </div>
   )
 }

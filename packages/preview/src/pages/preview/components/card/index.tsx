@@ -1,5 +1,5 @@
 import type { Identifier, XYCoord } from 'dnd-core'
-import type { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import update from 'immutability-helper'
@@ -17,7 +17,7 @@ export interface CardProps {
   }[]
   setCards: any
   IDkey: string
-  compActiveIndex: number|null
+  compActiveIndex: number | null
   setCompActiveIndex: (compActiveIndex: number) => void
 }
 
@@ -31,7 +31,7 @@ interface DragItem {
   comp: Item
 }
 
-export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards, compActiveIndex, setCompActiveIndex }) => {
+export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compActiveIndex, setCompActiveIndex }) => {
   const { id, text } = item
   const ref = useRef<HTMLDivElement>(null)
   const [{ handlerId }, drop] = useDrop<
@@ -69,21 +69,21 @@ export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards, compAc
         return
       }
 
-      if(item.originalIndex!==-1){
+      if (item.originalIndex !== -1) {
         setCards((prevCards: Item[]) =>
-        update(prevCards, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, prevCards[dragIndex] as Item],
-          ],
+          update(prevCards, {
+            $splice: [
+              [dragIndex, 1],
+              [hoverIndex, 0, prevCards[dragIndex] as Item],
+            ],
           }),
         )
-      }else{
+      } else {
         setCards((prevCards: Item[]) =>
-        update(prevCards, {
-          $splice: [
-            [hoverIndex, 0, item.comp],
-          ],
+          update(prevCards, {
+            $splice: [
+              [hoverIndex, 0, item.comp],
+            ],
           }),
         )
       }
@@ -94,10 +94,10 @@ export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards, compAc
   const [{ isDragging }, drag] = useDrag({
     type: 'comp',
     item: () => {
-      return {comp: item, originalIndex: index}
+      return { comp: item, originalIndex: index }
     },
     isDragging: (monitor) => {
-      return monitor.getItem().comp.id+'--'+monitor.getItem().originalIndex === IDkey
+      return monitor.getItem().comp.id + '--' + monitor.getItem().originalIndex === IDkey
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
@@ -107,22 +107,48 @@ export const Card: FC<CardProps> = ({ item, IDkey,cards, index, setCards, compAc
   const opacity = isDragging ? 0 : 1
   drag(drop(ref))
 
+  const titleTextStyle = useMemo(()=>{
+    let result = {}
+
+    if(item.name==='titleText'){
+      item?.config.forEach((_item:any)=>{
+        if(_item.config){
+          result[_item.format] = _item.config.style
+        }
+      })
+    }
+
+    return result
+  },[item])
+
   return (
-    <div 
-      ref={ref} 
-      style={{ 
+    <div
+      ref={ref}
+      style={{
         opacity,
-        border: '1px solid #blue' 
-      }} 
-      className = {classnames('card2-container',{
-        'active': compActiveIndex===index
+        border: '1px solid #blue'
+      }}
+      className={classnames('card2-container', {
+        'active': compActiveIndex === index
       })}
       data-handler-id={handlerId}
-      onClick={()=>{
+      onClick={() => {
         setCompActiveIndex(index)
       }}
     >
-      {item.[0].value}
+      {item.name === 'titleText' && item?.config.map((item2, index2) => {
+        console.log(2,titleTextStyle['position'])
+        return (
+          <div 
+            key={`titleText-${index2}`} 
+            className='title-text-container'
+            style={titleTextStyle['position']}
+          >
+            {item2.type === 'input' && (<span className='titleTextBlonder' style={titleTextStyle['title-size']}>{item2.value}</span>)}
+            {item2.type === 'textarea' && (<span style={titleTextStyle['content-size']}>{item2.value}</span>)}
+          </div>
+        )
+      })}
     </div>
   )
 }
