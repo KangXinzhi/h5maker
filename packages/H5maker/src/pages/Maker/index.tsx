@@ -22,13 +22,13 @@ const Maker: React.FC = () => {
           label: "标题内容",
           type: "input",
           format: "title",
-          value:'1'
+          value: '1'
         },
         {
           label: "描述内容",
           type: "textarea",
           format: "content",
-          value:'1'
+          value: '1'
         },
         {
           label: "显示位置",
@@ -48,7 +48,8 @@ const Maker: React.FC = () => {
                 justifyContent: 'left',
               },
               tooltip: '居左显示',
-            },{
+            }, 
+            {
               icon: '#icon-aligncenter',
               style: {
                 justifyContent: 'center',
@@ -75,13 +76,15 @@ const Maker: React.FC = () => {
                 fontSize: '16px',
               },
               tooltip: '大(16)号',
-            },{
+            }, 
+            {
               icon: '#icon-font-14',
               style: {
                 fontSize: '14px',
               },
               tooltip: '中(14)号',
-            },{
+            }, 
+            {
               icon: '#icon-font-12',
               style: {
                 fontSize: '12px',
@@ -108,13 +111,15 @@ const Maker: React.FC = () => {
                 fontSize: '16px',
               },
               tooltip: '大(16)号',
-            },{
+            }, 
+            {
               icon: '#icon-font-14',
               style: {
                 fontSize: '14px',
               },
               tooltip: '中(14)号',
-            },{
+            }, 
+            {
               icon: '#icon-font-12',
               style: {
                 fontSize: '12px',
@@ -133,7 +138,7 @@ const Maker: React.FC = () => {
   //监听iframe 传过来的postmessage
   useEffect(() => {
     window.addEventListener('message', ({ data }) => {
-      const { compActiveIndex,cards } = data;
+      const { compActiveIndex, cards } = data;
       setCompActiveIndex(compActiveIndex);
       setCards(cards);
     });

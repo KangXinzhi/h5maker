@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<List />}></Route>
-        <Route path="/shop/create" element={<Maker />}></Route>
+        <Route path="/shop/edit/:id" element={<Maker />}></Route>
       </Routes>
     </div>
   )
