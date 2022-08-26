@@ -19,7 +19,6 @@ export interface IProps {
 const index = (props: IProps) => {
   const { cards, setCards, compActiveIndex } = props
 
-
   return (
     <div className="editor">
       {compActiveIndex !== null && (

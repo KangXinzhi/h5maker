@@ -43,9 +43,7 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
         handlerId: monitor.getHandlerId(),
       }
     },
-    hover(item: DragItem, monitor) {
-      console.log('item2222-1222',item,monitor)
-      
+    hover(item: DragItem, monitor) {      
       if (!ref.current) {
         return
       }

@@ -67,14 +67,17 @@ const List: React.FC = () => {
   );
 
   const addShop = async () => {
-    const id = await db.ShopList?.add({
-      title:'未命名',
+    const id = await db.ShopList?.put({
+      title: '未命名',
       state: 'normal',
       createTime: new Date(),
-      memo: ''
+      memo: '',
+      schema: [],
     });
     console.log('id',id)
     navigate(`/shop/edit/${id}`)
+    // const res = await db.ShopList?.update(2, { "title" : "12131231"})
+    // console.log(res)
   }
 
   console.log('shopList', shopList)
