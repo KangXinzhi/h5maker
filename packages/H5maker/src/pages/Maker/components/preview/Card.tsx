@@ -31,7 +31,6 @@ interface DragItem {
 }
 
 export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compActiveIndex }) => {
-  const { id, text } = item
   const ref = useRef<HTMLDivElement>(null)
   const [{ handlerId }, drop] = useDrop<
     DragItem,
@@ -45,6 +44,8 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
       }
     },
     hover(item: DragItem, monitor) {
+      console.log('item2222-1222',item,monitor)
+      
       if (!ref.current) {
         return
       }
@@ -96,7 +97,7 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
       return { comp: item, originalIndex: index }
     },
     isDragging: (monitor) => {
-      return monitor.getItem().comp.id + '-' + monitor.getItem().originalIndex === IDkey
+      return `card-${monitor.getItem().originalIndex}` === IDkey
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
@@ -133,7 +134,6 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
       data-handler-id={handlerId}
     >
       {item.name === 'titleText' && item?.config.map((item2, index2) => {
-        console.log(2,titleTextStyle['position'])
         return (
           <div 
             key={`titleText-${index2}`} 

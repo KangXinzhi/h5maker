@@ -1,6 +1,7 @@
 import { Button } from 'antd'
 import React from 'react'
 import { Card } from './Card'
+import { EmptyCard } from './EmptyCard'
 import './index.less'
 
 export interface ICardProps {
@@ -33,22 +34,27 @@ const index = (props: ICardProps) => {
         id="previewIframe"
         style={{ visibility: showIframe ? 'visible' : 'hidden' }}
       />
-      <div 
-        className='preview'  
+      <div
+        className='preview'
         style={{ visibility: !showIframe ? 'visible' : 'hidden' }}
       >
         <div className="content">
-          {cards.map((card, index) => (
+          {cards?.length > 0 ? cards.map((card, index) => (
             <Card
-              key={card.id + '-' + index}
-              IDkey={card.id + '-' + index}
+              key={`card-${index}`}
+              IDkey={`card-${index}`}
               item={card}
               index={index}
               cards={cards}
               setCards={setCards}
               compActiveIndex={compActiveIndex}
             />
-          ))}
+          )) : (
+            <EmptyCard
+              cards={cards}
+              setCards={setCards}
+            />
+          )}
         </div>
       </div>
     </div>

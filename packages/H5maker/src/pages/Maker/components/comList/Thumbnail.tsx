@@ -1,19 +1,13 @@
-import { CSSProperties, FC, useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import { memo } from 'react'
-import { DragSourceMonitor, useDrag, useDrop } from 'react-dnd'
+import { DragSourceMonitor, useDrag } from 'react-dnd'
+import { IComponentItemProps } from './schema'
 
 export const ItemTypes = {
   CARD: 'card',
 }
 export interface CardProps {
-  item: {
-    id: string
-    text: string
-    icon: string
-    type: string
-    config: any
-    defaultConfig: any
-  }
+  item: IComponentItemProps
   setShowIframe: (showIframe: boolean) => void
 }
 
@@ -27,10 +21,6 @@ export const Thumbnail: FC<CardProps> = memo((props) => {
         setShowIframe(true)
         if (monitor.didDrop()) {
           item.originalIndex = -1
-          // 拖拽结束&处于放置目标,先简单放到最后
-          // setCards([...cards, item.comp])
-        } else {
-          // 拖拽结束&不处于放置目标
         }
       },
       collect: (monitor) => ({

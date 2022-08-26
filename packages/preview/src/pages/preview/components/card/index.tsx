@@ -97,7 +97,7 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
       return { comp: item, originalIndex: index }
     },
     isDragging: (monitor) => {
-      return monitor.getItem().comp.id + '--' + monitor.getItem().originalIndex === IDkey
+      return `card-${monitor.getItem().originalIndex}` === IDkey
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
@@ -137,7 +137,6 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
       }}
     >
       {item.name === 'titleText' && item?.config.map((item2, index2) => {
-        console.log(2,titleTextStyle['position'])
         return (
           <div 
             key={`titleText-${index2}`} 

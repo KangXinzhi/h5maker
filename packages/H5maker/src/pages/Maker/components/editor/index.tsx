@@ -19,7 +19,7 @@ export interface IProps {
 const index = (props: IProps) => {
   const { cards, setCards, compActiveIndex } = props
 
-  console.log(cards)
+
   return (
     <div className="editor">
       {compActiveIndex !== null && (
@@ -64,19 +64,19 @@ const index = (props: IProps) => {
                   {
                     item?.configOptions?.length > 0 && (
                       item.configOptions.map((item2, index2) => (
-                        <Button 
+                        <Button
                           key={`icon-${index}-${index2}`}
                           className={classNames({
                             'button-active': item?.config?.tooltip === item2.tooltip,
                           })}
-                          onClick={()=>{
+                          onClick={() => {
                             const copyCards = cards.splice(0)
                             copyCards[compActiveIndex].config[index].config = item2
                             setCards(copyCards)
                           }}
                         >
                           <svg className="icon" aria-hidden="true">
-                            <use xlinkHref={item2?.icon||''}></use>
+                            <use xlinkHref={item2?.icon || ''}></use>
                           </svg>
                         </Button>
                       ))
