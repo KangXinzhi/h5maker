@@ -29,7 +29,7 @@ const List: React.FC = () => {
     {
       title: '状态',
       dataIndex: 'state',
-      render: text => <span>{text==='normal'&&'正常'}</span>,
+      render: text => <span>{text === 'normal' && '正常'}</span>,
     },
     {
       title: '创建时间',
@@ -45,14 +45,14 @@ const List: React.FC = () => {
     {
       title: '操作',
       dataIndex: 'memo',
-      render: (_,record)=>{
+      render: (_, record) => {
         return (
           <>
-            <Button 
-              type='primary' 
-              style={{marginRight:'12px'}}
-              onClick={()=> {
-                navigate(`/shop/edit/${record.id}`)
+            <Button
+              type='primary'
+              style={{ marginRight: '12px' }}
+              onClick={() => {
+                navigate(`/shop/edit/${record?.id}`)
               }}
             >编辑</Button>
             <Button>删除</Button>
@@ -74,7 +74,7 @@ const List: React.FC = () => {
       memo: '',
       schema: [],
     });
-    console.log('id',id)
+    console.log('id', id)
     navigate(`/shop/edit/${id}`)
     // const res = await db.ShopList?.update(2, { "title" : "12131231"})
     // console.log(res)

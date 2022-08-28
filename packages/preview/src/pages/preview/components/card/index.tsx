@@ -107,19 +107,19 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
   const opacity = isDragging ? 0 : 1
   drag(drop(ref))
 
-  const titleTextStyle = useMemo(()=>{
+  const titleTextStyle = useMemo(() => {
     let result = {}
 
-    if(item.name==='titleText'){
-      item?.config.forEach((_item:any)=>{
-        if(_item.config){
+    if (item.name === 'titleText') {
+      item?.config.forEach((_item: any) => {
+        if (_item.config) {
           result[_item.format] = _item.config.style
         }
       })
     }
 
     return result
-  },[item])
+  }, [item])
 
   return (
     <div
@@ -138,8 +138,8 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
     >
       {item.name === 'titleText' && item?.config.map((item2, index2) => {
         return (
-          <div 
-            key={`titleText-${index2}`} 
+          <div
+            key={`titleText-${index2}`}
             className='title-text-container'
             style={titleTextStyle['position']}
           >

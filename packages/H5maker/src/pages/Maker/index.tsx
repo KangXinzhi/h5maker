@@ -15,13 +15,14 @@ import { db } from '../../db';
 import './index.less'
 
 const Maker: React.FC = () => {
+  const iFrame = document.getElementById('previewIframe') as HTMLIFrameElement;
   const [cards, setCards] = useState([])
   const [showIframe, setShowIframe] = useState(true)
   const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null); // 画布中当前正选中的组件
-  const {id} = useParams()
+  const { id } = useParams()
   const shopId = id && +id
   const shopSchema = useLiveQuery(
-    ()=> db.ShopList?.get(shopId)
+    () => db.ShopList?.get(shopId)
   );
 
   //监听iframe 传过来的postmessage
@@ -34,20 +35,29 @@ const Maker: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const iFrame = document.getElementById('previewIframe') as HTMLIFrameElement;
     if (iFrame && iFrame.contentWindow) {
-      iFrame.contentWindow.postMessage(cards, 'http://localhost:3007/#/preview');
+      iFrame.contentWindow!.postMessage(cards, 'http://localhost:3007/#/preview');
     }
   }, [cards])
 
-  useEffect(()=>{
-    setCards(shopSchema?.schema||[])
-  },[shopSchema?.title])
+  useEffect(() => {
+    if (!shopSchema?.schema) return
+    setCards(shopSchema.schema)
+
+    // 初始化获取数据后，向 preview 同步一次数据
+    if (iFrame && iFrame.contentWindow) {
+      setTimeout(() => {
+        console.log('setTimeout', setTimeout)
+        iFrame.contentWindow!.postMessage(shopSchema?.schema, 'http://localhost:3007/#/preview');
+      }, 1000)
+    }
+  }, [shopSchema])
+
 
   return (
     <div className='container'>
       <DndProvider backend={HTML5Backend}>
-        <TopBar cards={cards}/>
+        <TopBar cards={cards} />
         <ComList setShowIframe={setShowIframe} />
         <Preview compActiveIndex={compActiveIndex} showIframe={showIframe} cards={cards} setCards={setCards} />
         <Editor cards={cards} setCards={setCards} compActiveIndex={compActiveIndex} />
