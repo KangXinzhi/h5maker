@@ -4,30 +4,20 @@ import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import update from 'immutability-helper'
 import classnames from 'classnames'
+import { IComponentItemProps } from '../comList/schema'
 
 export interface CardProps {
-  item: {
-    id: number;
-    text: string;
-  }
+  item: IComponentItemProps
   index: number
-  cards: {
-    id: number;
-    text: string;
-  }[]
-  setCards: any
+  cards: [] | IComponentItemProps[]
+  setCards: React.Dispatch<React.SetStateAction<[] | IComponentItemProps[]>>
   IDkey: string
   compActiveIndex: number | null
 }
 
-export interface Item {
-  id: number
-  text: string
-}
-
 interface DragItem {
   originalIndex: number
-  comp: Item
+  comp: IComponentItemProps
 }
 
 export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compActiveIndex }) => {
@@ -43,7 +33,7 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
         handlerId: monitor.getHandlerId(),
       }
     },
-    hover(item: DragItem, monitor) {      
+    hover(item: DragItem, monitor) {
       if (!ref.current) {
         return
       }
@@ -68,16 +58,16 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
       }
 
       if (item.originalIndex !== -1) {
-        setCards((prevCards: Item[]) =>
+        setCards((prevCards: IComponentItemProps[]) =>
           update(prevCards, {
             $splice: [
               [dragIndex, 1],
-              [hoverIndex, 0, prevCards[dragIndex] as Item],
+              [hoverIndex, 0, prevCards[dragIndex] as IComponentItemProps],
             ],
           }),
         )
       } else {
-        setCards((prevCards: Item[]) =>
+        setCards((prevCards: IComponentItemProps[]) =>
           update(prevCards, {
             $splice: [
               [hoverIndex, 0, item.comp],
@@ -105,19 +95,19 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
   const opacity = isDragging ? 0 : 1
   drag(drop(ref))
 
-  const titleTextStyle = useMemo(()=>{
+  const titleTextStyle = useMemo(() => {
     let result = {}
 
-    if(item.name==='titleText'){
-      item?.config.forEach((_item:any)=>{
-        if(_item.config){
+    if (item.name === 'titleText') {
+      item?.config.forEach((_item: any) => {
+        if (_item.config) {
           result[_item.format] = _item.config.style
         }
       })
     }
 
     return result
-  },[item,cards])
+  }, [item, cards])
 
   return (
     <div
@@ -133,8 +123,8 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
     >
       {item.name === 'titleText' && item?.config.map((item2, index2) => {
         return (
-          <div 
-            key={`titleText-${index2}`} 
+          <div
+            key={`titleText-${index2}`}
             className='title-text-container'
             style={titleTextStyle['position']}
           >

@@ -1,18 +1,13 @@
 import { Button } from 'antd'
 import React from 'react'
+import { IComponentItemProps } from '../comList/schema'
 import { Card } from './Card'
 import { EmptyCard } from './EmptyCard'
 import './index.less'
 
 export interface ICardProps {
-  cards: {
-    id: number;
-    text: string;
-  }[]
-  setCards: React.Dispatch<React.SetStateAction<{
-    id: number;
-    text: string;
-  }[]>>
+  cards: [] | IComponentItemProps[]
+  setCards: React.Dispatch<React.SetStateAction<[] | IComponentItemProps[]>>
   showIframe: boolean
   compActiveIndex: number | null
 }

@@ -4,23 +4,16 @@ import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import update from 'immutability-helper'
 import classnames from 'classnames'
+import { IComponentItemProps } from '../comList/schema'
 
 export interface EmptyCardProps {
-  cards: {
-    id: number;
-    text: string;
-  }[]
-  setCards: any
-}
-
-interface Item {
-  id: number
-  text: string
+  cards: [] | IComponentItemProps[]
+  setCards: React.Dispatch<React.SetStateAction<[] | IComponentItemProps[]>>
 }
 
 interface DragItem {
   originalIndex: number
-  comp: Item
+  comp: IComponentItemProps
 }
 
 export const EmptyCard: FC<EmptyCardProps> = ({ cards, setCards }) => {
@@ -40,7 +33,7 @@ export const EmptyCard: FC<EmptyCardProps> = ({ cards, setCards }) => {
       if (!ref.current) {
         return
       }
-      setCards((prevCards: Item[]) =>
+      setCards((prevCards: IComponentItemProps[]) =>
         update(prevCards, {
           $splice: [
             [0, 0, item.comp],

@@ -2,17 +2,12 @@ import { Button, Input } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import classNames from 'classnames';
 import React from 'react'
+import { IComponentItemProps } from '../comList/schema';
 import './index.less'
 
 export interface IProps {
-  cards: {
-    id: number;
-    text: string;
-  }[]
-  setCards: React.Dispatch<React.SetStateAction<{
-    id: number;
-    text: string;
-  }[]>>
+  cards: [] | IComponentItemProps[]
+  setCards: React.Dispatch<React.SetStateAction<[] | IComponentItemProps[]>>
   compActiveIndex: number | null
 }
 
@@ -81,12 +76,6 @@ const index = (props: IProps) => {
                       ))
                     )
                   }
-                  {/* <Button>
-                    <svg className="icon" aria-hidden="true">
-                      <use xlinkHref="#icon-aligncenter"></use>
-                    </svg>
-                  </Button> */}
-
                 </div>
               </div>
             )

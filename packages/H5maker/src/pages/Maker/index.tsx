@@ -13,10 +13,11 @@ import Preview from './components/preview';
 
 import { db } from '../../db';
 import './index.less'
+import { IComponentItemProps } from './components/comList/schema';
 
 const Maker: React.FC = () => {
   const iFrame = document.getElementById('previewIframe') as HTMLIFrameElement;
-  const [cards, setCards] = useState([])
+  const [cards, setCards] = useState<IComponentItemProps[] | []>([])
   const [showIframe, setShowIframe] = useState(true)
   const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null); // 画布中当前正选中的组件
   const { id } = useParams()

@@ -12,10 +12,10 @@ export interface CardProps {
 }
 
 export const Thumbnail: FC<CardProps> = memo((props) => {
-  const { item,setShowIframe} = props
-  const [{isDragging}, drag] = useDrag(
+  const { item, setShowIframe } = props
+  const [{ isDragging }, drag] = useDrag(
     {
-      item: {comp: item, originalIndex: -1},
+      item: { comp: item, originalIndex: -1 },
       type: 'comp',
       end: (item: any, monitor: DragSourceMonitor) => {
         setShowIframe(true)
@@ -30,16 +30,16 @@ export const Thumbnail: FC<CardProps> = memo((props) => {
     [],
   );
 
-  useEffect(()=>{
-    if(isDragging){
+  useEffect(() => {
+    if (isDragging) {
       setShowIframe(false)
     }
-  },[isDragging])
+  }, [isDragging])
 
   return (
     <div ref={drag} className='thumb-container'>
-      <i 
-        className="com-item__icon" 
+      <i
+        className="com-item__icon"
         style={{
           backgroundImage: `url(${item.icon})`,
         }}
