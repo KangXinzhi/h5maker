@@ -17,10 +17,10 @@ export const Thumbnail: FC<CardProps> = memo((props) => {
     {
       item: { comp: item, originalIndex: -1 },
       type: 'comp',
-      end: (item: any, monitor: DragSourceMonitor) => {
+      end: (i: any, monitor: DragSourceMonitor) => {
         setShowIframe(true)
         if (monitor.didDrop()) {
-          item.originalIndex = -1
+          i.originalIndex = -1
         }
       },
       collect: (monitor) => ({

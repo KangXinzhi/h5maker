@@ -29,28 +29,15 @@ export const EmptyCard: FC<EmptyCardProps> = ({ cards, setCards }) => {
         handlerId: monitor.getHandlerId(),
       }
     },
-    hover(item: DragItem, monitor) {
+    drop: (item,monitor)=>{
       if (!ref.current) {
         return
       }
-      setCards((prevCards: IComponentItemProps[]) =>
-        update(prevCards, {
-          $splice: [
-            [0, 0, item.comp],
-          ],
-        }),
-      )
-    },
+      setCards([item.comp])
+    }
   })
 
-  const [, drag] = useDrag({
-    type: 'comp',
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  })
-
-  drag(drop(ref))
+  drop(ref)
 
   return (
     <div

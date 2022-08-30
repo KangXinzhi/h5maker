@@ -34,6 +34,8 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
       }
     },
     hover(item: DragItem, monitor) {
+      console.log('cards', cards)
+
       if (!ref.current) {
         return
       }
@@ -56,7 +58,6 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
       if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
         return
       }
-
       if (item.originalIndex !== -1) {
         setCards((prevCards: IComponentItemProps[]) =>
           update(prevCards, {
@@ -67,6 +68,7 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
           }),
         )
       } else {
+        console.log('item.comp',item.comp)
         setCards((prevCards: IComponentItemProps[]) =>
           update(prevCards, {
             $splice: [

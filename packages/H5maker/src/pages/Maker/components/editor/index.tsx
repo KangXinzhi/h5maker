@@ -14,6 +14,7 @@ export interface IProps {
 const index = (props: IProps) => {
   const { cards, setCards, compActiveIndex } = props
 
+  console.log(cards, compActiveIndex)
   return (
     <div className="editor">
       {compActiveIndex !== null && (
@@ -31,7 +32,6 @@ const index = (props: IProps) => {
                     copyCards[compActiveIndex].config[index].value = e.target.value
                     setCards(copyCards)
                   }} />
-
               </div>
             ) ||
             item.type === 'textarea' && (
@@ -79,7 +79,6 @@ const index = (props: IProps) => {
                 </div>
               </div>
             )
-
           ))}
         </>
       )}
