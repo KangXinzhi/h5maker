@@ -13,6 +13,7 @@ export interface CardProps {
   setCards: React.Dispatch<React.SetStateAction<[] | IComponentItemProps[]>>
   IDkey: string
   compActiveIndex: number | null
+  setCompActiveIndex: (compActiveIndex: number) => void
 }
 
 interface DragItem {
@@ -20,7 +21,7 @@ interface DragItem {
   comp: IComponentItemProps
 }
 
-export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compActiveIndex }) => {
+export const Card: FC<CardProps> = ({ setCompActiveIndex, item, IDkey, cards, index, setCards, compActiveIndex }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [{ handlerId }, drop] = useDrop<
     DragItem,

@@ -37,9 +37,9 @@ const Maker: React.FC = () => {
 
   useEffect(() => {
     if (iFrame && iFrame.contentWindow) {
-      iFrame.contentWindow!.postMessage(cards, 'http://localhost:3007/#/preview');
+      iFrame.contentWindow!.postMessage({cards, compActiveIndex}, 'http://localhost:3007/#/preview');
     }
-  }, [cards])
+  }, [cards,compActiveIndex])
 
   useEffect(() => {
     if (!shopSchema?.schema) return
@@ -53,12 +53,14 @@ const Maker: React.FC = () => {
     }
   }, [shopSchema])
 
+  console.log('compActiveIndex', compActiveIndex)
+
   return (
     <div className='container'>
       <DndProvider backend={HTML5Backend}>
         <TopBar cards={cards} />
         <ComList setShowIframe={setShowIframe} />
-        <Preview compActiveIndex={compActiveIndex} showIframe={showIframe} cards={cards} setCards={setCards} />
+        <Preview compActiveIndex={compActiveIndex} showIframe={showIframe} cards={cards} setCards={setCards} setCompActiveIndex={setCompActiveIndex} />
         <Editor cards={cards} setCards={setCards} compActiveIndex={compActiveIndex} />
       </DndProvider>
     </div>

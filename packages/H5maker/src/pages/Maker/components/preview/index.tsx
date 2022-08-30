@@ -10,10 +10,11 @@ export interface ICardProps {
   setCards: React.Dispatch<React.SetStateAction<[] | IComponentItemProps[]>>
   showIframe: boolean
   compActiveIndex: number | null
+  setCompActiveIndex: (compActiveIndex: number) => void
 }
 
 const index = (props: ICardProps) => {
-  const { cards, setCards, showIframe = true, compActiveIndex } = props
+  const { cards, setCards, showIframe = true, compActiveIndex, setCompActiveIndex } = props
   return (
     <div className='preview-wrap'>
       <div className='tool-bar'>
@@ -43,11 +44,13 @@ const index = (props: ICardProps) => {
               cards={cards}
               setCards={setCards}
               compActiveIndex={compActiveIndex}
+              setCompActiveIndex={setCompActiveIndex}
             />
           )) : (
             <EmptyCard
               cards={cards}
               setCards={setCards}
+              setCompActiveIndex={setCompActiveIndex}
             />
           )}
         </div>

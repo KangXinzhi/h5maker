@@ -9,6 +9,7 @@ import { IComponentItemProps } from '../comList/schema'
 export interface EmptyCardProps {
   cards: [] | IComponentItemProps[]
   setCards: React.Dispatch<React.SetStateAction<[] | IComponentItemProps[]>>
+  setCompActiveIndex: (compActiveIndex: number) => void
 }
 
 interface DragItem {
@@ -16,7 +17,7 @@ interface DragItem {
   comp: IComponentItemProps
 }
 
-export const EmptyCard: FC<EmptyCardProps> = ({ cards, setCards }) => {
+export const EmptyCard: FC<EmptyCardProps> = ({ cards, setCards, setCompActiveIndex }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [{ handlerId }, drop] = useDrop<
     DragItem,
@@ -34,6 +35,7 @@ export const EmptyCard: FC<EmptyCardProps> = ({ cards, setCards }) => {
         return
       }
       setCards([item.comp])
+      setCompActiveIndex(0)
     }
   })
 

@@ -18,7 +18,10 @@ const PreView = () => {
   useEffect(() => {
     window.addEventListener('message', (e) => {
       if (e.origin === 'http://localhost:3000') {
-        e.data && setCards(e.data)
+        const { compActiveIndex, cards } = e.data;
+        console.log('compActiveIndex', compActiveIndex)
+        compActiveIndex && setCompActiveIndex(compActiveIndex);
+        cards && setCards(cards);
       }
     });
   }, []);
