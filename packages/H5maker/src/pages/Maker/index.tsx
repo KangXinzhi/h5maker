@@ -48,7 +48,7 @@ const Maker: React.FC = () => {
     // 初始化获取数据后，向 preview 同步一次数据
     if (iFrame && iFrame.contentWindow) {
       setTimeout(() => {
-        iFrame.contentWindow!.postMessage(shopSchema?.schema, 'http://localhost:3007/#/preview');
+        iFrame.contentWindow!.postMessage({ cards: shopSchema?.schema }, 'http://localhost:3007/#/preview');
       }, 1000)
     }
   }, [shopSchema])

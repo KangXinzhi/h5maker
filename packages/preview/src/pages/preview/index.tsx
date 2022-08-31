@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { useUpdateEffect } from "ahooks";
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import { Card } from "./components/card";
-import { PreviewHeader } from "./components/previewHeader";
-import { PreviewFooter } from "./components/previewFooter";
+import { Card } from "../../components/card";
+import { PreviewHeader } from "../../components/previewHeader";
+import { PreviewFooter } from "../../components/previewFooter";
 
 import "./index.css";
 

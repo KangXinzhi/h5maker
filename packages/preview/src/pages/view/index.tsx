@@ -1,29 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { DndProvider } from "react-dnd";
+import { useUpdateEffect } from "ahooks";
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { Card } from "../../components/card";
+import { PreviewHeader } from "../../components/previewHeader";
+import { PreviewFooter } from "../../components/previewFooter";
+
 import "./index.css";
+import { ViewCard } from "../../components/viewCard";
 
-let id = 0;
 const View = () => {
-  const [currentCacheCopm, setCurrentCacheCopm] = useState([]);
+  const [cards, setCards] = useState([]); // all component
+  const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null); // 画布中当前正选中的组件
 
-  // useEffect(() => {
-  //   getCompsInfo();
-  // }, []);
 
-  /** 读取组件信息 */
-  // const getCompsInfo = async () => {
-  //   let data = null;
-  //   try {
-  //     data = await getSchema();
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-
-  //   data && setCurrentCacheCopm(data.resData.currentCacheCopm);
-  // };
+  //监听父页面 传过来的postmessage
+  useEffect(() => {
+    window.addEventListener('message', (e) => {
+      if (e.origin === 'http://localhost:3000') {
+        const { cards } = e.data;
+        cards && setCards(cards);
+      }
+    });
+  }, [])
 
   return (
-    <div className="view">
-      2
+    <div className='view'>
+      <div className="content">
+        <PreviewHeader />
+        <div className="main">
+          {cards.map((card, index) => (
+            <ViewCard
+              key={`card-${index}`}
+              IDkey={`card-${index}`}
+              item={card}
+              index={index}
+              cards={cards}
+              setCards={setCards}
+            />
+          ))}
+        </div>
+        <PreviewFooter />
+      </div>
     </div>
   );
 };
