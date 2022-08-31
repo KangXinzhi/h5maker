@@ -1,6 +1,8 @@
 import { Button } from 'antd'
 import React from 'react'
 import { IComponentItemProps } from '../comList/schema'
+import { PreviewFooter } from '../previewFooter'
+import { PreviewHeader } from '../previewHeader'
 import { Card } from './Card'
 import { EmptyCard } from './EmptyCard'
 import './index.less'
@@ -35,24 +37,28 @@ const index = (props: ICardProps) => {
         style={{ visibility: !showIframe ? 'visible' : 'hidden' }}
       >
         <div className="content">
-          {cards?.length > 0 ? cards.map((card, index) => (
-            <Card
-              key={`card-${index}`}
-              IDkey={`card-${index}`}
-              item={card}
-              index={index}
-              cards={cards}
-              setCards={setCards}
-              compActiveIndex={compActiveIndex}
-              setCompActiveIndex={setCompActiveIndex}
-            />
-          )) : (
-            <EmptyCard
-              cards={cards}
-              setCards={setCards}
-              setCompActiveIndex={setCompActiveIndex}
-            />
-          )}
+          <PreviewHeader />
+          <div className="main">
+            {cards?.length > 0 ? cards.map((card, index) => (
+              <Card
+                key={`card-${index}`}
+                IDkey={`card-${index}`}
+                item={card}
+                index={index}
+                cards={cards}
+                setCards={setCards}
+                compActiveIndex={compActiveIndex}
+                setCompActiveIndex={setCompActiveIndex}
+              />
+            )) : (
+              <EmptyCard
+                cards={cards}
+                setCards={setCards}
+                setCompActiveIndex={setCompActiveIndex}
+              />
+            )}
+          </div>
+          <PreviewFooter />
         </div>
       </div>
     </div>

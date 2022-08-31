@@ -30,13 +30,13 @@ export const componentList: IComponentItemProps[] = [
         label: "标题内容",
         type: "input",
         format: "title",
-        value: '请输入文本内容'
+        value: '请输入标题内容'
       },
       {
         label: "描述内容",
         type: "textarea",
         format: "content",
-        value: '请输入标题内容'
+        value: '请输入文本内容'
       },
       {
         label: "显示位置",

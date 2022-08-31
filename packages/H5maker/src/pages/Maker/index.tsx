@@ -37,9 +37,9 @@ const Maker: React.FC = () => {
 
   useEffect(() => {
     if (iFrame && iFrame.contentWindow) {
-      iFrame.contentWindow!.postMessage({cards, compActiveIndex}, 'http://localhost:3007/#/preview');
+      iFrame.contentWindow!.postMessage({ cards, compActiveIndex }, 'http://localhost:3007/#/preview');
     }
-  }, [cards,compActiveIndex])
+  }, [cards, compActiveIndex])
 
   useEffect(() => {
     if (!shopSchema?.schema) return
