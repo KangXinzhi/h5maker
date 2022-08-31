@@ -19,13 +19,11 @@ const PreView = () => {
     window.addEventListener('message', (e) => {
       if (e.origin === 'http://localhost:3000') {
         const { compActiveIndex, cards } = e.data;
-        console.log('compActiveIndex', compActiveIndex)
-        compActiveIndex && setCompActiveIndex(compActiveIndex);
+        compActiveIndex!== null && setCompActiveIndex(compActiveIndex);
         cards && setCards(cards);
       }
     });
   }, []);
-
   return (
     <div className='preview'>
       <DndProvider backend={HTML5Backend}>

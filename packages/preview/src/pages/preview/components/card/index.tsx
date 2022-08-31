@@ -88,6 +88,7 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
         )
       }
       item.originalIndex = hoverIndex
+      setCompActiveIndex(hoverIndex)
     },
   })
 
