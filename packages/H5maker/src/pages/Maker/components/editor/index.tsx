@@ -14,7 +14,6 @@ export interface IProps {
 const index = (props: IProps) => {
   const { cards, setCards, compActiveIndex } = props
 
-  console.log(cards, compActiveIndex)
   return (
     <div className="editor">
       {compActiveIndex !== null && cards?.[compActiveIndex] && (

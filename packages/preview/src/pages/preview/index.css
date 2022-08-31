@@ -15,3 +15,7 @@
   background-color: #f7f8fa;
   box-shadow: 0 4px 16px 0 rgb(0 0 0 / 10%);
 }
+
+.main {
+  min-height: 400px;
+}

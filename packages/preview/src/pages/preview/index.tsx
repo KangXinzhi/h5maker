@@ -3,6 +3,8 @@ import { DndProvider } from "react-dnd";
 import { useUpdateEffect } from "ahooks";
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { Card } from "./components/card";
+import { PreviewHeader } from "./components/previewHeader";
+import { PreviewFooter } from "./components/previewFooter";
 
 import "./index.css";
 
@@ -19,29 +21,35 @@ const PreView = () => {
     window.addEventListener('message', (e) => {
       if (e.origin === 'http://localhost:3000') {
         const { compActiveIndex, cards } = e.data;
-        compActiveIndex!== null && setCompActiveIndex(compActiveIndex);
+        compActiveIndex !== null && setCompActiveIndex(compActiveIndex);
         cards && setCards(cards);
       }
     });
-  }, []);
+  }, [])
+
   return (
     <div className='preview'>
-      <DndProvider backend={HTML5Backend}>
-        <div className="content">
-          {cards.map((card, index) => (
-            <Card
-              key={`card-${index}`}
-              IDkey={`card-${index}`}
-              item={card}
-              index={index}
-              cards={cards}
-              setCards={setCards}
-              compActiveIndex={compActiveIndex}
-              setCompActiveIndex={setCompActiveIndex}
-            />
-          ))}
+      <div className="content">
+        <PreviewHeader />
+        <div className="main">
+          <DndProvider backend={HTML5Backend}>
+
+            {cards.map((card, index) => (
+              <Card
+                key={`card-${index}`}
+                IDkey={`card-${index}`}
+                item={card}
+                index={index}
+                cards={cards}
+                setCards={setCards}
+                compActiveIndex={compActiveIndex}
+                setCompActiveIndex={setCompActiveIndex}
+              />
+            ))}
+          </DndProvider>
         </div>
-      </DndProvider>
+        <PreviewFooter />
+      </div>
     </div>
   );
 };

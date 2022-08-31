@@ -5,34 +5,45 @@ import { useDrag, useDrop } from 'react-dnd'
 import update from 'immutability-helper'
 import classnames from 'classnames'
 import './index.less'
-export interface CardProps {
-  item: {
-    id: number;
-    text: string;
-  }
-  index: number
-  cards: {
-    id: number;
-    text: string;
+
+export interface IComponentItemProps {
+  text: string  // 组件区中组件的名称
+  name: string  // 组件区中组件的的key
+  icon: string  // 组件区中组件的icon地址
+  config: {
+    label: string   // 配置区中title名称
+    type: string  // 配置区组件类型
+    format: string
+    value?: string
+    config?: {  // 默认配置项
+      icon: string
+      style: React.CSSProperties
+      tooltip: string,
+    }
+    configOptions?: {  // 配置区中组件配置列表
+      icon: string
+      style: React.CSSProperties
+      tooltip: string,
+    }[]
   }[]
-  setCards: any
+}
+
+export interface CardProps {
+  item: IComponentItemProps
+  index: number
+  cards: [] | IComponentItemProps[]
+  setCards: React.Dispatch<React.SetStateAction<[] | IComponentItemProps[]>>
   IDkey: string
   compActiveIndex: number | null
   setCompActiveIndex: (compActiveIndex: number) => void
 }
 
-export interface Item {
-  id: number
-  text: string
-}
-
 interface DragItem {
   originalIndex: number
-  comp: Item
+  comp: IComponentItemProps
 }
 
 export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compActiveIndex, setCompActiveIndex }) => {
-  const { id, text } = item
   const ref = useRef<HTMLDivElement>(null)
   const [{ handlerId }, drop] = useDrop<
     DragItem,
@@ -70,16 +81,16 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
       }
 
       if (item.originalIndex !== -1) {
-        setCards((prevCards: Item[]) =>
+        setCards((prevCards: IComponentItemProps[]) =>
           update(prevCards, {
             $splice: [
               [dragIndex, 1],
-              [hoverIndex, 0, prevCards[dragIndex] as Item],
+              [hoverIndex, 0, prevCards[dragIndex] as IComponentItemProps],
             ],
           }),
         )
       } else {
-        setCards((prevCards: Item[]) =>
+        setCards((prevCards: IComponentItemProps[]) =>
           update(prevCards, {
             $splice: [
               [hoverIndex, 0, item.comp],
