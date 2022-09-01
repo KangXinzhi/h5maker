@@ -23,13 +23,14 @@ const PreView = () => {
     window.addEventListener('message', (e) => {
       if (e.origin === 'http://localhost:3000') {
         const { compActiveIndex, cards } = e.data;
-        compActiveIndex !== null && setCompActiveIndex(compActiveIndex);
+        compActiveIndex != null && setCompActiveIndex(compActiveIndex);
         cards && setCards(cards);
       }
     })
 
-    window.addEventListener('scroll', debounce(()=>{
+    window.addEventListener('scroll', debounce(() => {
       const scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+      console.log('scrollY2', scrollY)
       window.parent.postMessage({ scrollY }, "*");
     }, 500))
   }, [])

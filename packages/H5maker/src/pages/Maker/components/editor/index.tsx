@@ -16,7 +16,7 @@ const index = (props: IProps) => {
 
   return (
     <div className="editor">
-      {compActiveIndex !== null && cards?.[compActiveIndex] && (
+      {compActiveIndex != null && cards?.[compActiveIndex] && (
         <>
           <h2>{cards[compActiveIndex].text}</h2>
           {cards[compActiveIndex].config.map((item, index) => (

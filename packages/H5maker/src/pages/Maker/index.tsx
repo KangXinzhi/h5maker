@@ -31,9 +31,9 @@ const Maker: React.FC = () => {
   useEffect(() => {
     window.addEventListener('message', ({ data }) => {
       const { compActiveIndex, cards, scrollY } = data;
-      compActiveIndex !== null && setCompActiveIndex(compActiveIndex);
+      compActiveIndex != null && setCompActiveIndex(compActiveIndex);
       cards && setCards(cards);
-      setScrollY(scrollY)
+      scrollY != null && setScrollY(scrollY)
     });
   }, []);
 

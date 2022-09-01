@@ -155,8 +155,8 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
             className='title-text-container'
             style={titleTextStyle['position']}
           >
-            {item2.type === 'input' && (<span className='titleTextBlonder' style={titleTextStyle['title-size']}>{item2.value}</span>)}
-            {item2.type === 'textarea' && (<span style={titleTextStyle['content-size']}>{item2.value}</span>)}
+            {item2.type === 'input' && (<span className='title-text' style={titleTextStyle['title-size']}>{item2.value}</span>)}
+            {item2.type === 'textarea' && (<span className='content-text' style={titleTextStyle['content-size']}>{item2.value}</span>)}
           </div>
         )
       })}

@@ -18,7 +18,14 @@ const index = ({ cards }: { cards: any }) => {
 
   return (
     <div className="top-bar">
-      <div className="top-bar-back">返回微页面</div>
+      <div
+        className="top-bar-back"
+        onClick={async () => {
+          navigate(`/`)
+        }}
+      >
+        返回微页面
+      </div>
       <div className="decorate-action">
         <Button
           onClick={async () => {

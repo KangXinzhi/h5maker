@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Space, Button } from 'antd';
+import { Table, Space, Button, message } from 'antd';
 import type { ColumnsType } from 'antd/lib/table';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useNavigate } from 'react-router-dom'
@@ -10,15 +10,24 @@ import './index.less'
 
 
 interface DataType {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-  tags: string[];
+  id: number;
+  title: string;
+  state: string;
+  createTime: Date;
+  memo: string;
 }
 
 const List: React.FC = () => {
   let navigate = useNavigate();
+
+  const deleteShop = async (id: number) => {
+    const res = await db.ShopList?.delete(id);
+    if (!res) {
+      message.success('删除成功！')
+    } else {
+      message.error('删除失败！')
+    }
+  }
 
   const columns: ColumnsType<DataType> = [
     {
@@ -52,10 +61,18 @@ const List: React.FC = () => {
               type='primary'
               style={{ marginRight: '12px' }}
               onClick={() => {
-                navigate(`/shop/edit/${record?.id}`)
+                navigate(`/shop/edit/${record.id}`)
               }}
-            >编辑</Button>
-            <Button>删除</Button>
+            >
+              编辑
+            </Button>
+            <Button
+              onClick={() => {
+                deleteShop(record.id)
+              }}
+            >
+              删除
+            </Button>
           </>
         )
       }
@@ -79,6 +96,8 @@ const List: React.FC = () => {
     // const res = await db.ShopList?.update(2, { "title" : "12131231"})
     // console.log(res)
   }
+
+
 
   console.log('shopList', shopList)
   return (

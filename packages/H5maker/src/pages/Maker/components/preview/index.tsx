@@ -24,7 +24,7 @@ const index = (props: ICardProps) => {
   //   document.querySelector('.preview').style.top = `${-scrollY + 56 + 16}px`;
   // }, [scrollY])
 
-  console.log('scrollY',scrollY)
+  console.log('scrollY', scrollY)
   return (
     <div className='preview-wrap'>
       <div className='tool-bar'>
@@ -41,10 +41,10 @@ const index = (props: ICardProps) => {
         style={{ visibility: showIframe ? 'visible' : 'hidden' }}
       />
       <div
-        className='preview'
-        style={{ 
+        className='clone-iframe'
+        style={{
           visibility: !showIframe ? 'visible' : 'hidden',
-          top: -(scrollY ?? 0) + 56 + 16 +'px'
+          top: -(scrollY ?? 0) + 56 + 16 + 'px'
         }}
       >
         <div className="content">

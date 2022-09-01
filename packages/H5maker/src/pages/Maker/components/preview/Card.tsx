@@ -69,7 +69,7 @@ export const Card: FC<CardProps> = ({ setCompActiveIndex, item, IDkey, cards, in
           }),
         )
       } else {
-        console.log('item.comp',item.comp)
+        console.log('item.comp', item.comp)
         setCards((prevCards: IComponentItemProps[]) =>
           update(prevCards, {
             $splice: [
@@ -132,8 +132,8 @@ export const Card: FC<CardProps> = ({ setCompActiveIndex, item, IDkey, cards, in
             className='title-text-container'
             style={titleTextStyle['position']}
           >
-            {item2.type === 'input' && (<span className='titleTextBlonder' style={titleTextStyle['title-size']}>{item2.value}</span>)}
-            {item2.type === 'textarea' && (<span style={titleTextStyle['content-size']}>{item2.value}</span>)}
+            {item2.type === 'input' && (<span className='title-text' style={titleTextStyle['title-size']}>{item2.value}</span>)}
+            {item2.type === 'textarea' && (<span className='content-text' style={titleTextStyle['content-size']}>{item2.value}</span>)}
           </div>
         )
       })}
