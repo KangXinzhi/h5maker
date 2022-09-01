@@ -1,4 +1,7 @@
 body {
+  /* windows 下 iframe document 有16px padding */
+  width: calc(100% + 16px);
+  position: relative;
   background-color: #f7f8fa;
-  overflow: hidden;
+  overflow-x: hidden;
 }
