@@ -18,6 +18,7 @@ import { IComponentItemProps } from './components/comList/schema';
 const Maker: React.FC = () => {
   const iFrame = document.getElementById('previewIframe') as HTMLIFrameElement;
   const [cards, setCards] = useState<IComponentItemProps[] | []>([])
+  const [scrollY, setScrollY] = useState(0)
   const [showIframe, setShowIframe] = useState(true)
   const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null); // 画布中当前正选中的组件
   const { id } = useParams()
@@ -29,9 +30,10 @@ const Maker: React.FC = () => {
   //监听iframe 传过来的postmessage
   useEffect(() => {
     window.addEventListener('message', ({ data }) => {
-      const { compActiveIndex, cards } = data;
-      setCompActiveIndex(compActiveIndex);
-      setCards(cards);
+      const { compActiveIndex, cards, scrollY } = data;
+      compActiveIndex !== null && setCompActiveIndex(compActiveIndex);
+      cards && setCards(cards);
+      setScrollY(scrollY)
     });
   }, []);
 
@@ -60,7 +62,7 @@ const Maker: React.FC = () => {
       <DndProvider backend={HTML5Backend}>
         <TopBar cards={cards} />
         <ComList setShowIframe={setShowIframe} />
-        <Preview compActiveIndex={compActiveIndex} showIframe={showIframe} cards={cards} setCards={setCards} setCompActiveIndex={setCompActiveIndex} />
+        <Preview scrollY={scrollY} compActiveIndex={compActiveIndex} showIframe={showIframe} cards={cards} setCards={setCards} setCompActiveIndex={setCompActiveIndex} />
         <Editor cards={cards} setCards={setCards} compActiveIndex={compActiveIndex} />
       </DndProvider>
     </div>

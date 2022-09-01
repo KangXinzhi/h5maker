@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { useUpdateEffect } from "ahooks";
+import { debounce } from 'lodash'
+
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { Card } from "../../components/card";
 import { PreviewHeader } from "../../components/previewHeader";
@@ -24,7 +26,12 @@ const PreView = () => {
         compActiveIndex !== null && setCompActiveIndex(compActiveIndex);
         cards && setCards(cards);
       }
-    });
+    })
+
+    window.addEventListener('scroll', debounce(()=>{
+      const scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+      window.parent.postMessage({ scrollY }, "*");
+    }, 500))
   }, [])
 
   return (

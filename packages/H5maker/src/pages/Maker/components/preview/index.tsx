@@ -1,5 +1,5 @@
 import { Button } from 'antd'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IComponentItemProps } from '../comList/schema'
 import { PreviewFooter } from '../previewFooter'
 import { PreviewHeader } from '../previewHeader'
@@ -8,6 +8,7 @@ import { EmptyCard } from './EmptyCard'
 import './index.less'
 
 export interface ICardProps {
+  scrollY: number
   cards: [] | IComponentItemProps[]
   setCards: React.Dispatch<React.SetStateAction<[] | IComponentItemProps[]>>
   showIframe: boolean
@@ -16,7 +17,14 @@ export interface ICardProps {
 }
 
 const index = (props: ICardProps) => {
-  const { cards, setCards, showIframe = true, compActiveIndex, setCompActiveIndex } = props
+  const { cards, setCards, showIframe = true, compActiveIndex, setCompActiveIndex, scrollY } = props
+
+  // useEffect(() => {
+  //   //@ts-ignore
+  //   document.querySelector('.preview').style.top = `${-scrollY + 56 + 16}px`;
+  // }, [scrollY])
+
+  console.log('scrollY',scrollY)
   return (
     <div className='preview-wrap'>
       <div className='tool-bar'>
@@ -34,7 +42,10 @@ const index = (props: ICardProps) => {
       />
       <div
         className='preview'
-        style={{ visibility: !showIframe ? 'visible' : 'hidden' }}
+        style={{ 
+          visibility: !showIframe ? 'visible' : 'hidden',
+          top: -(scrollY ?? 0) + 56 + 16 +'px'
+        }}
       >
         <div className="content">
           <PreviewHeader />
