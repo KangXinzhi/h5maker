@@ -23,6 +23,6 @@ pnpm run start
 ## todo list
 - [x] 重构：yarn 迁移 pnpm
 - [x] 重构：全局状态 jotai
-- [ ] 导出schema
-- [ ] 导入schema
+- [x] 导出schema
+- [x] 导入schema
 - [ ] 删除组件
