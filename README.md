@@ -22,3 +22,9 @@ cd preview
 yarn
 yarn start
 ````
+
+## todo list
+- [ ] 重构：yarn 迁移 pnpm
+- [ ] 重构：全局状态组件 jotai
+- [ ] 导出schema
+- [ ] 导入schema
