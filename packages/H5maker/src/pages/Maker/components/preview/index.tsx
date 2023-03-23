@@ -1,5 +1,8 @@
 import { Button } from 'antd'
 import React, { useEffect } from 'react'
+import { useAtom } from "jotai";
+import { cardsAtom, scrollYAtom, compActiveIndexAtom, showIframeAtom } from '../../../../store'
+
 import { IComponentItemProps } from '../comList/schema'
 import { PreviewFooter } from '../previewFooter'
 import { PreviewHeader } from '../previewHeader'
@@ -16,8 +19,11 @@ export interface ICardProps {
   setCompActiveIndex: (compActiveIndex: number) => void
 }
 
-const index = (props: ICardProps) => {
-  const { cards, setCards, showIframe = true, compActiveIndex, setCompActiveIndex, scrollY } = props
+const index = () => {
+  const [cards, setCards] = useAtom<IComponentItemProps[] | []>(cardsAtom)
+  const [scrollY] = useAtom<number>(scrollYAtom)
+  const [showIframe, setShowIframe] = useAtom<boolean>(showIframeAtom)
+  const [compActiveIndex, setCompActiveIndex] = useAtom<number | null>(compActiveIndexAtom)
 
   // useEffect(() => {
   //   //@ts-ignore

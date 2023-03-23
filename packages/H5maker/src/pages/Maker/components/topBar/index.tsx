@@ -1,9 +1,14 @@
 import { Button, message } from 'antd'
 import { useParams, useNavigate } from 'react-router-dom';
+
+import { useAtom } from "jotai";
+import { cardsAtom } from '../../../../store'
+
 import { db } from '../../../../db';
 import './index.less'
 
-const index = ({ cards }: { cards: any }) => {
+const index = () => {
+  const [cards] = useAtom(cardsAtom)
   const { id } = useParams()
   const navigate = useNavigate();
   const shopId = id && +id

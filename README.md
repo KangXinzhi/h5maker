@@ -9,7 +9,6 @@
 
 启动前端
 ````
-// node 版本>=16
 // 使用pnpm安装，未安装需先安装pnpm
 
 pnpm install
@@ -23,6 +22,7 @@ pnpm run start
 
 ## todo list
 - [x] 重构：yarn 迁移 pnpm
-- [ ] 重构：全局状态组件 jotai
+- [x] 重构：全局状态 jotai
 - [ ] 导出schema
 - [ ] 导入schema
+- [ ] 删除组件
