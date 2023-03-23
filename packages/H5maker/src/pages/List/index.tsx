@@ -97,9 +97,6 @@ const List: React.FC = () => {
     // console.log(res)
   }
 
-
-
-  console.log('shopList', shopList)
   return (
     <div className='container'>
       <Button

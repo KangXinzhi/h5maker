@@ -2,6 +2,9 @@ import { Button, Input } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import classNames from 'classnames';
 import React from 'react'
+import { useAtom, atom } from "jotai";
+import { cardsAtom, compActiveIndexAtom } from '../../../../store'
+
 import { IComponentItemProps } from '../comList/schema';
 import './index.less'
 
@@ -11,8 +14,9 @@ export interface IProps {
   compActiveIndex: number | null
 }
 
-const index = (props: IProps) => {
-  const { cards, setCards, compActiveIndex } = props
+const index = () => {
+  const [cards, setCards] = useAtom(cardsAtom)
+  const [compActiveIndex] = useAtom(compActiveIndexAtom)
 
   return (
     <div className="editor">
