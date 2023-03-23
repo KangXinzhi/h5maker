@@ -1,0 +1,15 @@
+{
+  "name": "h5maker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:KangXinzhi/h5maker.git",
+  "author": "KangXinzhi <50164727+KangXinzhi@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "installChild": "concurrently \"cd packages/H5maker && pnpm install\" \"cd packages/preview && pnpm install\"",
+    "start": "concurrently \"cd packages/H5maker && pnpm run start\" \"cd packages/preview && pnpm run start\""
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

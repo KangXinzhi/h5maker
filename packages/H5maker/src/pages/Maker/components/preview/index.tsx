@@ -34,7 +34,7 @@ const index = (props: ICardProps) => {
       </div>
       <iframe
         className='preview-iframe'
-        src="http://localhost:3007/#/preview"
+        src="http://localhost:3007/preview"
         scrolling="yes"
         frameBorder="0"
         id="previewIframe"

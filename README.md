@@ -8,23 +8,21 @@
 ## 项目启动：
 
 启动前端
-```
-cd packages
-cd H5maker
-yarn
-yarn start
-```
+````
+// node 版本>=16
+// 使用pnpm安装，未安装需先安装pnpm
 
-新建终端启动iframe
-```
-cd packages
-cd preview
-yarn
-yarn start
+pnpm install
+
+pnpm run installChild
+
+pnpm run start
+
+// open http://localhost:3000/
 ````
 
 ## todo list
-- [ ] 重构：yarn 迁移 pnpm
+- [x] 重构：yarn 迁移 pnpm
 - [ ] 重构：全局状态组件 jotai
 - [ ] 导出schema
 - [ ] 导入schema

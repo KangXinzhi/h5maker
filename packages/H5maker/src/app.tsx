@@ -1,9 +1,10 @@
-import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import List from './pages/List'
 import 'antd/dist/antd.css'
+
+import List from './pages/List'
 import Maker from './pages/Maker'
 import View from './pages/View'
+import './App.css'
 
 function App() {
 
