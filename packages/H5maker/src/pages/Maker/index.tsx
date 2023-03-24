@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useParams } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import { useAtom, atom } from "jotai";
-import { cardsAtom, scrollYAtom, compActiveIndexAtom, showIframeAtom } from '../../store'
+import { useAtom } from "jotai";
+import { cardsAtom, scrollYAtom, compActiveIndexAtom } from '../../store'
 
 import TopBar from './components/topBar'
 import ComList from './components/comList'
@@ -13,14 +13,12 @@ import Preview from './components/preview';
 
 import { db } from '../../db';
 import './index.less'
-import { IComponentItemProps } from './components/comList/schema';
 
 const Maker: React.FC = () => {
   const iFrame = document.getElementById('previewIframe') as HTMLIFrameElement;
 
   const [cards, setCards] = useAtom(cardsAtom)
   const [, setScrollY] = useAtom(scrollYAtom)
-  const [, setShowIframe] = useAtom(showIframeAtom)
   const [compActiveIndex, setCompActiveIndex] = useAtom(compActiveIndexAtom)
 
 
@@ -64,7 +62,7 @@ const Maker: React.FC = () => {
     <div className='container'>
       <DndProvider backend={HTML5Backend}>
         <TopBar />
-        <ComList setShowIframe={setShowIframe} />
+        <ComList />
         <Preview />
         <Editor />
       </DndProvider>

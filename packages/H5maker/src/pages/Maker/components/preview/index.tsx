@@ -8,6 +8,7 @@ import { PreviewHeader } from '../previewHeader'
 import { Card } from './Card'
 import { EmptyCard } from './EmptyCard'
 import './index.less'
+import styles from './index.module.less'
 
 export interface ICardProps {
   scrollY: number
@@ -43,12 +44,19 @@ const index = () => {
         scrolling="yes"
         frameBorder="0"
         id="previewIframe"
-        style={{ visibility: showIframe ? 'visible' : 'hidden' }}
+        style={{ 
+          // visibility: showIframe ? 'visible' : 'hidden' 
+          // 调试阶段直接开启 visibility:'hidden' 
+          visibility:'hidden' 
+        
+        }}
       />
       <div
         className='clone-iframe'
         style={{
-          visibility: !showIframe ? 'visible' : 'hidden',
+          // visibility: !showIframe ? 'visible' : 'hidden',
+          // 调试阶段直接开启 visibility:'visible',
+          visibility:'visible',
           top: -(scrollY ?? 0) + 56 + 16 + 'px'
         }}
       >

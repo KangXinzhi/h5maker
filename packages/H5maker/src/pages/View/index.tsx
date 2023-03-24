@@ -31,7 +31,7 @@ const View: React.FC = () => {
     <div className='view-iframe-container'>
       <iframe
         className='view-iframe'
-        src="http://localhost:300/view"
+        src="http://localhost:3007/view"
         scrolling="yes"
         frameBorder="0"
         id="viewIframe"

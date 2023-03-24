@@ -6,7 +6,7 @@ import './index.less'
 import { Thumbnail } from './Thumbnail'
 import { componentList } from './schema'
 
-const index = (props: { setShowIframe: (showIframe: boolean) => void }) => {
+const index = () => {
   const [, setShowIframe] = useAtom<boolean>(showIframeAtom)
 
   return (
@@ -16,7 +16,7 @@ const index = (props: { setShowIframe: (showIframe: boolean) => void }) => {
           <div className="com-item">
             <Thumbnail
               item={item}
-              setShowIframe={props.setShowIframe}
+              setShowIframe={setShowIframe}
             />
           </div>
 

@@ -14,12 +14,14 @@ export interface IComponentItemProps {
     value?: string
     config?: {  // 默认配置项
       icon: string
-      style: React.CSSProperties
+      name?: string 
+      style?: React.CSSProperties
       tooltip: string,
     }
     configOptions?: {  // 配置区中组件配置列表
       icon: string
-      style: React.CSSProperties
+      name?: string 
+      style?: React.CSSProperties
       tooltip: string,
     }[]
   }[]
