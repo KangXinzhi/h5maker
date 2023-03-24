@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { DndProvider } from "react-dnd";
-import { useUpdateEffect } from "ahooks";
-import { HTML5Backend } from 'react-dnd-html5-backend'
-import { Card } from "../../components/card";
 import { PreviewHeader } from "../../components/previewHeader";
 import { PreviewFooter } from "../../components/previewFooter";
 
@@ -11,8 +7,6 @@ import { ViewCard } from "../../components/viewCard";
 
 const View = () => {
   const [cards, setCards] = useState([]); // all component
-  const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null); // 画布中当前正选中的组件
-
 
   //监听父页面 传过来的postmessage
   useEffect(() => {
