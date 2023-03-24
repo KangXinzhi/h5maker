@@ -1,5 +1,4 @@
-import { Button } from 'antd'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useAtom } from "jotai";
 import { cardsAtom, scrollYAtom, compActiveIndexAtom, showIframeAtom } from '../../../../store'
 
@@ -22,7 +21,7 @@ export interface ICardProps {
 const index = () => {
   const [cards, setCards] = useAtom<IComponentItemProps[] | []>(cardsAtom)
   const [scrollY] = useAtom<number>(scrollYAtom)
-  const [showIframe, setShowIframe] = useAtom<boolean>(showIframeAtom)
+  const [showIframe, ] = useAtom<boolean>(showIframeAtom)
   const [compActiveIndex, setCompActiveIndex] = useAtom<number | null>(compActiveIndexAtom)
 
   // useEffect(() => {

@@ -59,8 +59,8 @@ const index = () => {
                 </div>
                 <div>
                   {
-                    item?.configOptions?.length > 0 && (
-                      item.configOptions.map((item2, index2) => (
+                    item?.configOptions?.length! > 0 && (
+                      item.configOptions!.map((item2, index2) => (
                         <Button
                           key={`icon-${index}-${index2}`}
                           className={classNames({
