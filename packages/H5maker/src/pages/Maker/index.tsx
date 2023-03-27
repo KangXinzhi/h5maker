@@ -21,7 +21,6 @@ const Maker: React.FC = () => {
   const [, setScrollY] = useAtom(scrollYAtom)
   const [compActiveIndex, setCompActiveIndex] = useAtom(compActiveIndexAtom)
 
-
   const { id } = useParams()
   const shopId = id && +id
   const shopSchema = useLiveQuery(
@@ -55,8 +54,6 @@ const Maker: React.FC = () => {
       }, 1000)
     }
   }, [shopSchema])
-
-  console.log('compActiveIndex', compActiveIndex)
 
   return (
     <div className='container'>

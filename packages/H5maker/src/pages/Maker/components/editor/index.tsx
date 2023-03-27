@@ -65,7 +65,7 @@ const index = () => {
                           <Button
                             key={`icon-${index}-${index2}`}
                             className={classNames({
-                              'button-active': item?.config?.tooltip === item2.tooltip,
+                              [styles['button-active']]: item?.config?.tooltip === item2.tooltip,
                             })}
                             onClick={() => {
                               const copyCards = cards.splice(0)
@@ -111,7 +111,7 @@ const index = () => {
                           <Button
                             key={`icon-${index}-${index2}`}
                             className={classNames({
-                              'button-active': item?.config?.tooltip === item2.tooltip,
+                              [styles['button-active']]: item?.config?.tooltip === item2.tooltip,
                             })}
                             onClick={() => {
                               const copyCards = cards.splice(0)
