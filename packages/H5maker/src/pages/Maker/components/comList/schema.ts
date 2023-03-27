@@ -9,12 +9,14 @@ export interface IComponentItemProps {
     value?: string
     config?: {  // 默认配置项
       icon: string
-      style: React.CSSProperties
+      name?: string 
+      style?: React.CSSProperties
       tooltip: string,
     }
     configOptions?: {  // 配置区中组件配置列表
       icon: string
-      style: React.CSSProperties
+      name?: string 
+      style?: React.CSSProperties
       tooltip: string,
     }[]
   }[]
@@ -23,7 +25,7 @@ export interface IComponentItemProps {
 export const componentList: IComponentItemProps[] = [
   {
     text: '标题文本',
-    name: "titleText",
+    name: 'titleText',
     icon: 'https://img01.yzcdn.cn/upload_files/2022/06/17/FjAs6eTmbK_4lQRI3GYXu97Fj_B_.png',
     config: [
       {
@@ -133,6 +135,68 @@ export const componentList: IComponentItemProps[] = [
               fontSize: '12px',
             },
             tooltip: '小(12)号',
+          }
+        ]
+      },
+    ],
+  },
+  {
+    text: '店铺信息',
+    name: "shopInfo",
+    icon: 'https://img01.yzcdn.cn/upload_files/2022/06/17/FqZDUVBo1kNfJsQ06mureerfsFuU.png',
+    config: [
+      {
+        label: "背景图片",
+        type: "image",
+        format: "background",
+        value: 'https://img01.yzcdn.cn/public_files/2017/07/11/f2a0a05d5a801cb51ecbc0710e6947fb.png'
+      },
+      {
+        label: "店铺名称",
+        type: "input",
+        format: "shopName",
+        value: '个人小店'
+      },
+      {
+        label: "简介",
+        type: "input",
+        format: "shopInfo",
+        value: '全部商品 999 | 上新 30'
+      },
+      {
+        label: "显示样式",
+        type: "legend-style-shop",
+        format: "legend-style-shop",
+        config: {
+          icon: '#icon-alignleft',
+          name: 'shop_style_1',
+          tooltip: '样式一',
+        },
+        configOptions: [
+          {
+            icon: '#icon-alignleft',
+            name: 'shop_style_1',
+            tooltip: '样式一',
+          },
+          {
+            icon: '#icon-aligncenter',
+            name: 'shop_style_2',
+            tooltip: '样式二',
+          },
+          {
+            icon: '#icon-aligncenter',
+            name: 'shop_style_3',
+            tooltip: '样式三',
+          },
+          {
+            icon: '#icon-aligncenter',
+            name: 'shop_style_4',
+            tooltip: '样式四',
+          },
+          {
+            icon: '#icon-aligncenter',
+            name: 'shop_style_5',
+            tooltip: '样式五',
           }
         ]
       },
