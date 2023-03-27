@@ -126,7 +126,7 @@ export const Card: FC<CardProps> = ({ setCompActiveIndex, item, IDkey, cards, in
         border: '1px solid #blue'
       }}
       className={classnames(styles['card-container'], {
-        'active': compActiveIndex === index
+        [styles['active']]: compActiveIndex === index
       })}
       data-handler-id={handlerId}
     >

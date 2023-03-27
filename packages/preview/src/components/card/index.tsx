@@ -150,7 +150,7 @@ export const Card: FC<CardProps> = ({ item, IDkey, cards, index, setCards, compA
         border: '1px solid #blue'
       }}
       className={classnames(styles['card-container'], {
-        'active': compActiveIndex === index
+        [styles['active']]: compActiveIndex === index
       })}
       data-handler-id={handlerId}
       onClick={() => {
