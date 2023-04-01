@@ -8,9 +8,10 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import "./index.less";
 import classNames from "classnames";
+import { IComponentItemProps } from "@kxz/components/Card";
 
 const Home = () => {
-  const [cards, setCards] = useState([]); // all component
+  const [cards, setCards] = useState<[] | IComponentItemProps[]>([]); // all component
   const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null); // 画布中当前正选中的组件
   useUpdateEffect(() => {
     window.parent.postMessage(

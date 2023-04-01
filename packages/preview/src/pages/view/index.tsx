@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import { ViewCard } from "../../components/viewCard";
 import { PreviewHeader, PreviewFooter } from "@kxz/components";
+import { IComponentItemProps } from "@kxz/components/Card";
 
 const View = () => {
-  const [cards, setCards] = useState([]); // all component
+  const [cards, setCards] = useState<[] | IComponentItemProps[]>([]);
 
   //监听父页面 传过来的postmessage
   useEffect(() => {

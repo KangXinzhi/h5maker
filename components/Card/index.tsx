@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import update from "immutability-helper";
 import classnames from "classnames";
-import { IComponentItemProps } from "../comList/schema";
 import styles from "./index.module.less";
 
 export interface IComponentItemProps {
