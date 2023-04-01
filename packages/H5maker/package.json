@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kxz/components": "workspace:^0.0.1",
     "antd": "^4.20.7",
     "classnames": "^2.3.1",
     "dayjs": "^1.11.5",

@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kxz/components": "workspace:^0.0.1",
     "@types/lodash": "^4.14.184",
     "@types/react-router-dom": "^5.3.3",
     "ahooks": "^3.7.0",
