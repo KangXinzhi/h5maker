@@ -13,12 +13,22 @@ importers:
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       '@vitejs/plugin-react': ^3.1.0
+      classnames: ^2.3.1
+      dayjs: ^1.11.5
+      dnd-core: ^16.0.1
+      immutability-helper: ^3.1.1
       react: ^18.2.0
+      react-dnd: ^16.0.1
       react-dom: ^18.2.0
       typescript: ^4.9.3
       vite: ^4.2.0
     dependencies:
+      classnames: registry.npmmirror.com/classnames/2.3.2
+      dayjs: registry.npmmirror.com/dayjs/1.11.7
+      dnd-core: registry.npmmirror.com/dnd-core/16.0.1
+      immutability-helper: registry.npmmirror.com/immutability-helper/3.1.1
       react: registry.npmmirror.com/react/18.2.0
+      react-dnd: registry.npmmirror.com/react-dnd/16.0.1_o2wclmlv6kymw75psj4clbbe6a
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
     devDependencies:
       '@types/react': registry.npmmirror.com/@types/react/18.0.31
@@ -38,6 +48,7 @@ importers:
       dayjs: ^1.11.5
       dexie: ^3.2.2
       dexie-react-hooks: ^1.1.1
+      dnd-core: ^16.0.1
       immutability-helper: ^3.1.1
       jotai: ^2.0.3
       less: ^4.1.2
@@ -56,6 +67,7 @@ importers:
       dayjs: registry.npmmirror.com/dayjs/1.11.7
       dexie: registry.npmmirror.com/dexie/3.2.3
       dexie-react-hooks: registry.npmmirror.com/dexie-react-hooks/1.1.3_yppvjofesnywfwbf56q4sze7qq
+      dnd-core: registry.npmmirror.com/dnd-core/16.0.1
       immutability-helper: registry.npmmirror.com/immutability-helper/3.1.1
       jotai: registry.npmmirror.com/jotai/2.0.3_react@18.2.0
       less: registry.npmmirror.com/less/4.1.3
