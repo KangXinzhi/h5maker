@@ -1,0 +1,7 @@
+packages:
+  # 低代码端
+  - "packages/H5maker"
+  # iframe预览端
+  - "packages/preview"
+
+  - "components/**"
